@@ -35,3 +35,26 @@ export async function triggerAgent() {
 export async function getDashboardData() {
   return getDb();
 }
+
+export async function generateCallScript(caseId: string) {
+  const db = getDb();
+  const c = db.cases.find(x => x.id === caseId);
+  
+  if (!c) return "Error: Case not found";
+
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  return `
+**Call Script for ${c.providerName}**
+**Ref:** ${c.policyNumber} (Client: ${c.clientName})
+
+**Opener:**
+"Hi, I'm calling to chase the LOA for ${c.clientName}, policy number ${c.policyNumber}. This was sent on ${new Date(c.dateCreated).toLocaleDateString()}."
+
+**The Problem:**
+"It has been ${c.urgency === 'high' ? 'over 15 days' : 'a week'} since we sent this. My client is waiting."
+
+**The Ask:**
+"I need you to confirm on this call that the transfer value will be issued by Friday. Please do not tell me '10 working days' as that deadline has passed."
+  `.trim();
+}
