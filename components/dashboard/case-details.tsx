@@ -11,9 +11,11 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Case, LogEntry } from "@/lib/types"
 import { formatDistance } from "date-fns"
-import { Bot, User, Building2, FileText, PhoneCall, Sparkles, Copy } from "lucide-react"
+import { Bot, User, Building2, FileText, PhoneCall, Sparkles, Copy, UploadCloud, Loader2 } from "lucide-react"
 import { useState } from "react"
-import { generateCallScript } from "@/app/actions"
+import { generateCallScript, uploadProviderDocument } from "@/app/actions"
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 interface CaseDetailsDialogProps {
   isOpen: boolean
@@ -25,6 +27,24 @@ interface CaseDetailsDialogProps {
 export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: CaseDetailsDialogProps) {
   const [script, setScript] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
+  const [uploading, setUploading] = useState(false);
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  if (!e.target.files?.[0] || !caseData) return;
+
+  setUploading(true);
+  const formData = new FormData();
+  formData.append('caseId', caseData.id);
+  formData.append('file', e.target.files[0]);
+
+  const result = await uploadProviderDocument(formData);
+
+  setUploading(false);
+
+  if (result.success && result.script) {
+    setScript(result.script); // Auto-show the script the AI wrote!
+  }
+};
 
   if (!caseData && script) setScript(null)
 
@@ -81,9 +101,32 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
             </div>
           </div>
 
-          <div className="flex flex-col h-full pb-1 overflow-hidden">
-            <h3 className="text-sm font-medium text-slate-500 mb-4 sticky top-0 bg-white py-2 z-10 flex-shrink-0">
-              Agent Recommendations
+            <div className="flex flex-col h-full pb-4 overflow-hidden">
+            <div className="bg-slate-50 p-4 rounded-lg border border-dashed border-slate-300 mb-4">
+                <Label htmlFor="doc-upload" className="cursor-pointer">
+                <div className="flex items-center justify-center gap-2 text-sm text-slate-600 hover:text-indigo-600 transition-colors">
+                    {uploading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                    <UploadCloud className="w-4 h-4" />
+                    )}
+                    <span className="font-medium">
+                    {uploading ? "Analyzing with Groq..." : "Upload Provider Response"}
+                    </span>
+                </div>
+                <Input 
+                    id="doc-upload" 
+                    type="file" 
+                    className="hidden" 
+                    accept=".txt,.pdf,.docx"
+                    onChange={handleFileUpload}
+                    disabled={uploading}
+                />
+                </Label>
+            </div>
+
+            <h3 className="text-sm font-medium text-slate-500 mb-4 sticky top-0 bg-white py-2 z-10 shrink-0">
+                Agent Analysis & Scripts
             </h3>
             
             {script ? (
@@ -98,7 +141,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
                 <p className="text-sm text-slate-700 mb-1 font-medium">
                   {caseData.urgency === 'high' ? 'High Urgency Detected' : 'Routine Check Recommended'}
                 </p>
-                <p className="text-xs text-slate-500 mb-6 max-w-[250px]">
+                <p className="text-xs text-slate-500 mb-6 max-w-62.5">
                   The Agent can analyze the timeline and generate a strict call script for {caseData.providerName}.
                 </p>
                 <Button onClick={handleGenerateScript} disabled={loading} className="w-full bg-indigo-600 hover:bg-indigo-700">
@@ -109,7 +152,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
             )}
             
             {script && (
-              <Button variant="outline" className="mt-4 flex-shrink-0" onClick={() => navigator.clipboard.writeText(script)}>
+              <Button variant="outline" className="mt-4 shrink-0" onClick={() => navigator.clipboard.writeText(script)}>
                 <Copy className="w-4 h-4 mr-2" />
                 Copy to Clipboard
               </Button>
@@ -127,11 +170,11 @@ function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string
   
   return (
     <div className="flex gap-4 group">
-      <div className="w-8 flex flex-col items-center flex-shrink-0">
+      <div className="w-8 flex flex-col items-center shrink-0">
         <div className={`p-2 rounded-full ${isAgent ? 'bg-indigo-100 text-indigo-600 ring-2 ring-indigo-50' : 'bg-slate-100 text-slate-500'}`}>
           {getIcon(log.actor)}
         </div>
-        <div className="w-0.5 grow bg-slate-200 mt-2 group-last:hidden min-h-[20px]" />
+        <div className="w-0.5 grow bg-slate-200 mt-2 group-last:hidden min-h-5" />
       </div>
 
       <div className="pb-2 w-full">

@@ -18,6 +18,14 @@ export interface LogEntry {
   details?: string;
 }
 
+export interface ClientContext {
+  netWorth?: string;        
+  goals?: string[];        
+  risks?: string[];        
+  incomeSummary?: string;   
+  notes?: string;     
+}
+
 export interface Case {
   id: string;
   clientName: string;
@@ -29,6 +37,8 @@ export interface Case {
   dateCreated: string;
   lastUpdateDate: string; 
   nextActionDate: string; 
+  
+  clientContext?: ClientContext; 
   
   history: LogEntry[];
 }
