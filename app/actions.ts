@@ -8,6 +8,7 @@ import { runAgentCycle } from '@/lib/agent';
 import { analyzeDocumentWithGroq } from '@/lib/ai';
 import { ingestClientFile } from '@/lib/ingest';
 import { LogEntry } from '@/lib/types';
+import { generateScriptWithGroq } from '@/lib/ai';
 
 export async function resetSimulation() {
   seedDatabase();
@@ -44,26 +45,12 @@ export async function generateCallScript(caseId: string) {
   
   if (!c) return "Error: Case not found";
 
-  await new Promise(resolve => setTimeout(resolve, 1500));
-
-  const contextNote = c.clientContext?.risks 
-    ? `\n**Context:** Client has flagged risks: ${c.clientContext.risks.join(', ')}.` 
-    : '';
-
-  return `
-**Call Script for ${c.providerName}**
-**Ref:** ${c.policyNumber} (Client: ${c.clientName})
-
-**Opener:**
-"Hi, I'm calling to chase the LOA for ${c.clientName}, policy number ${c.policyNumber}. This was sent on ${new Date(c.dateCreated).toLocaleDateString()}."
-
-**The Problem:**
-"It has been ${c.urgency === 'high' ? 'over 15 days' : 'a week'} since we sent this. My client is waiting."
-${contextNote}
-
-**The Ask:**
-"I need you to confirm on this call that the transfer value will be issued by Friday. Please do not tell me '10 working days' as that deadline has passed."
-  `.trim();
+  try {
+    const script = await generateScriptWithGroq(c);
+    return script;
+  } catch (error) {
+    return "Error: AI Service Unavailable";
+  }
 }
 
 export async function uploadProviderDocument(formData: FormData) {

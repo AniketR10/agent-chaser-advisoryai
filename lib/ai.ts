@@ -97,6 +97,60 @@ export async function ingestClientFile(rawText: string) {
   return newCase;
 }
 
+export async function generateScriptWithGroq(c: Case) {
+  const dateSent = new Date(c.dateCreated).toLocaleDateString('en-GB', {
+    day: 'numeric', month: 'long', year: 'numeric'
+  });
+
+  const prompt = `
+    You are an expert UK Financial Advisor Assistant.
+    Generate a strict, professional PHONE CALL SCRIPT for the advisor to chase a provider.
+
+    CASE DETAILS:
+    - Client: ${c.clientName}
+    - Provider: ${c.providerName}
+    - Policy: ${c.policyNumber}
+    - Urgency: ${c.urgency.toUpperCase()}
+    - DATE LOA SENT: ${dateSent} (Use this exact date in the opener)
+    
+    CLIENT INTELLIGENCE (Leverage this):
+    - Risks: ${c.clientContext?.risks?.join(", ") || "None"}
+    - Goals: ${c.clientContext?.goals?.join(", ") || "None"}
+    - Financials: ${c.clientContext?.netWorth || "N/A"}
+
+    TASK:
+    Write a clean call script. Do NOT use markdown symbols (*, #).
+    
+    STRUCTURE:
+    OPENER
+    (Reference policy & the DATE LOA SENT: ${dateSent})
+
+    THE PROBLEM
+    (State the delay)
+
+    THE LEVERAGE
+    (Mention specific Client Risks to explain why delay is unacceptable)
+
+    THE ASK
+    (Demand outcome by Friday)
+  `;
+
+  try {
+    const completion = await groq.chat.completions.create({
+      messages: [
+        { role: "system", content: "You are a helpful financial assistant. Output plain text only." },
+        { role: "user", content: prompt },
+      ],
+      model: "openai/gpt-oss-120b", 
+    });
+
+    return completion.choices[0]?.message?.content || "Failed to generate script.";
+  } catch (error) {
+    console.error("Groq Script Error:", error);
+    return "Error generating script.";
+  }
+}
+
 export async function analyzeDocumentWithGroq(fileContent: string, caseContext: any) {
   const prompt = `
   You are an expert UK Financial Advisor Assistant.
