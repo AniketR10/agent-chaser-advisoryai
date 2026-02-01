@@ -1,0 +1,74 @@
+{
+  "virtualDate": "2026-02-01T11:12:49.884Z",
+  "cases": [
+    {
+      "id": "case-1",
+      "clientName": "Sarah Jenkins",
+      "providerName": "Alina",
+      "policyNumber": "AV-9982-X",
+      "status": "loa-sent-client",
+      "urgency": "normal",
+      "dateCreated": "2026-01-22T11:12:49.884Z",
+      "lastUpdateDate": "2026-01-24T11:12:49.884Z",
+      "nextActionDate": "2026-01-31T11:12:49.884Z",
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-01-22T11:12:49.884Z",
+          "actor": "Advisor",
+          "action": "Case Created"
+        },
+        {
+          "id": "2",
+          "date": "2026-01-24T11:12:49.884Z",
+          "actor": "Advisor",
+          "action": "LOA Sent to Client"
+        }
+      ]
+    },
+    {
+      "id": "case-2",
+      "clientName": "Marcus Chen",
+      "providerName": "Legal & General",
+      "policyNumber": "LG-2231-P",
+      "status": "loa-sent-provider",
+      "urgency": "high",
+      "dateCreated": "2026-01-12T11:12:49.884Z",
+      "lastUpdateDate": "2026-01-14T11:12:49.884Z",
+      "nextActionDate": "2026-01-29T11:12:49.884Z",
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-01-12T11:12:49.884Z",
+          "actor": "Advisor",
+          "action": "LOA Signed by Client"
+        },
+        {
+          "id": "2",
+          "date": "2026-01-14T11:12:49.884Z",
+          "actor": "Advisor",
+          "action": "LOA Sent to Provider"
+        }
+      ]
+    },
+    {
+      "id": "case-3",
+      "clientName": "Emily Blunt",
+      "providerName": "Royal London",
+      "policyNumber": "RL-777-X",
+      "status": "discovery",
+      "urgency": "normal",
+      "dateCreated": "2026-01-30T11:12:49.884Z",
+      "lastUpdateDate": "2026-01-30T11:12:49.884Z",
+      "nextActionDate": "2026-01-27T11:12:49.884Z",
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-01-30T11:12:49.884Z",
+          "actor": "Advisor",
+          "action": "Discovery Meeting Notes Added"
+        }
+      ]
+    }
+  ]
+}
