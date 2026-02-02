@@ -26,7 +26,6 @@ export async function ingestClientFile(rawText: string) {
       "clientName": "Name",
       "providerName": "Provider",
       "policyNumber": "Policy",
-      "urgency": "high" | "normal",
       "clientContext": {
          "netWorth": "Value",
          "incomeSummary": "Value",
@@ -56,7 +55,6 @@ export async function ingestClientFile(rawText: string) {
     providerName: extracted.providerName || "General Portfolio",
     policyNumber: extracted.policyNumber || "Pending",
     status: 'discovery',
-    urgency: extracted.urgency || 'normal',
     dateCreated: new Date().toISOString(),
     lastUpdateDate: new Date().toISOString(),
     nextActionDate: new Date().toISOString(),

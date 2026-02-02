@@ -139,7 +139,9 @@
         "protection": [],
         "completedSteps": [
           "RECOMMENDATIONS - IN PROGRESS: Grief counselling and emotional support",
-          "RECOMMENDATIONS - IN PROGRESS: Downsizing exploration"
+          "RECOMMENDATIONS - IN PROGRESS: Downsizing exploration",
+          "RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k",
+          "RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial"
         ]
       },
       "history": [
@@ -160,6 +162,18 @@
           "date": "2026-02-02T08:30:38.171Z",
           "actor": "Agent",
           "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Downsizing exploration\""
+        },
+        {
+          "id": "hmgnw2d42",
+          "date": "2026-02-02T08:46:07.765Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k\""
+        },
+        {
+          "id": "d7f2dei4n",
+          "date": "2026-02-02T08:47:07.946Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial\""
         }
       ]
     }

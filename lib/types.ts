@@ -3,7 +3,6 @@ export type CaseStatus =
   | 'discovery' | 'loa-drafting' | 'loa-sent-client' | 'processing-loa'   
   | 'loa-sent-provider' | 'provider-ack' | 'completed';      
 
-export type Urgency = 'normal' | 'high' | 'critical';
 
 export interface LogEntry {
   id: string;
@@ -32,7 +31,6 @@ export interface Case {
   providerName: string; 
   policyNumber: string;
   status: CaseStatus;
-  urgency: Urgency;
   
   dateCreated: string;
   lastUpdateDate: string; 

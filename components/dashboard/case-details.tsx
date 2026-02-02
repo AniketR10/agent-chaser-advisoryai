@@ -99,7 +99,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
       if (!open) setScript(null);
       onClose();
     }}>
-      <DialogContent className="!max-w-[96vw] w-[96vw] h-[96vh] flex flex-col overflow-hidden font-sans p-0 gap-0 outline-none bg-slate-50">
+      <DialogContent className="max-w-[96vw]! w-[96vw] h-[96vh] flex flex-col overflow-hidden font-sans p-0 gap-0 outline-none bg-slate-50">
         
         {/* HEADER */}
         <div className="p-4 border-b border-slate-200 bg-white shrink-0 pr-16 shadow-sm z-20">
@@ -113,11 +113,6 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
                     {caseData.policyNumber}
                 </Badge>
                 </div>
-                {caseData.urgency === 'high' && (
-                <Badge variant="destructive" className="uppercase tracking-widest text-[10px] px-2 py-0.5 shadow-sm">
-                    High Urgency
-                </Badge>
-                )}
             </div>
             <DialogDescription className="text-slate-500 text-sm flex items-center gap-2">
                 Provider: <span className="font-semibold text-slate-700">{caseData.providerName}</span>
@@ -323,7 +318,7 @@ function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string
         <div className={`p-1.5 rounded-full ${isAgent ? 'bg-indigo-100 text-indigo-600 ring-2 ring-indigo-50' : 'bg-slate-100 text-slate-500'}`}>
           {getIcon(log.actor)}
         </div>
-        <div className="w-0.5 grow bg-slate-200 mt-1 group-last:hidden min-h-[16px]" />
+        <div className="w-0.5 grow bg-slate-200 mt-1 group-last:hidden min-h-4" />
       </div>
       <div className="pb-2 w-full">
         <div className="flex items-center gap-2 mb-0.5">

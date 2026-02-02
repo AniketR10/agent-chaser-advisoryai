@@ -31,7 +31,6 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
                 <TableHead>Client</TableHead>
                 <TableHead>Provider</TableHead>
                 <TableHead>Status</TableHead>
-                <TableHead>Urgency</TableHead>
                 <TableHead>Last Update</TableHead>
               </TableRow>
             </TableHeader>
@@ -46,9 +45,6 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
                   <TableCell>{c.providerName}</TableCell>
                   <TableCell>
                     <StatusBadge status={c.status} />
-                  </TableCell>
-                  <TableCell>
-                    <UrgencyBadge level={c.urgency} />
                   </TableCell>
                   <TableCell className="text-muted-foreground">
                     {formatDistance(new Date(c.lastUpdateDate), new Date(virtualDate))} ago
@@ -87,10 +83,4 @@ function StatusBadge({ status }: { status: string }) {
       {label}
     </Badge>
   )
-}
-
-function UrgencyBadge({ level }: { level: string }) {
-  if (level === 'critical') return <Badge variant="destructive">Critical</Badge>
-  if (level === 'high') return <Badge className="bg-orange-500 hover:bg-orange-600">High</Badge>
-  return <Badge variant="outline">Normal</Badge>
 }

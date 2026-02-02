@@ -20,8 +20,7 @@ export async function ingestClientFile(rawText: string) {
     2. 'risks': Specific health issues (e.g. "Back problems") or job concerns.
     3. 'occupations': Combine Name + Job Title + Income if available.
     4. 'protection': Summarize Life Cover or Critical Illness details.
-    5. 'urgency': Set to 'high' if there is a 'shortfall' or 'health issue' mentioned.
-    6. 'status': Default to 'discovery'.
+    5. 'status': Default to 'discovery'.
 
     OUTPUT JSON STRUCTURE:
     {
@@ -29,7 +28,6 @@ export async function ingestClientFile(rawText: string) {
       "providerName": "Largest pension provider mentioned (or 'General Portfolio')",
       "policyNumber": "Policy number if found (or 'Pending')",
       "status": "discovery",
-      "urgency": "normal" | "high",
       "clientContext": {
          "netWorth": "Total Net Worth Value",
          "incomeSummary": "Household Income Value",
@@ -56,19 +54,16 @@ export async function ingestClientFile(rawText: string) {
   const extracted = JSON.parse(completion.choices[0]?.message?.content || "{}");
   const ctx = extracted.clientContext || {};
 
-  // Create the Case Object
   const newCase: Case = {
     id: `case-${Date.now()}`,
     clientName: extracted.clientName || "Unknown Client",
     providerName: extracted.providerName || "General Portfolio",
     policyNumber: extracted.policyNumber || "Pending",
     status: extracted.status || 'discovery',
-    urgency: extracted.urgency || 'normal',
     dateCreated: new Date().toISOString(),
     lastUpdateDate: new Date().toISOString(),
     nextActionDate: new Date().toISOString(),
     
-    // THIS IS WHERE THE DATA GETS SAVED
     clientContext: {
       netWorth: ctx.netWorth,
       incomeSummary: ctx.incomeSummary,
