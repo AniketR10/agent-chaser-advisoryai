@@ -2,50 +2,6 @@
   "virtualDate": "2026-02-02T08:29:16.124Z",
   "cases": [
     {
-      "id": "case-2",
-      "clientName": "Marcus Chen",
-      "providerName": "Legal & General",
-      "policyNumber": "LG-2231-P",
-      "status": "loa-sent-provider",
-      "urgency": "high",
-      "dateCreated": "2026-01-13T08:29:16.124Z",
-      "lastUpdateDate": "2026-01-15T08:29:16.124Z",
-      "nextActionDate": "2026-01-30T08:29:16.124Z",
-      "history": [
-        {
-          "id": "1",
-          "date": "2026-01-13T08:29:16.124Z",
-          "actor": "Advisor",
-          "action": "LOA Signed by Client"
-        },
-        {
-          "id": "2",
-          "date": "2026-01-15T08:29:16.124Z",
-          "actor": "Advisor",
-          "action": "LOA Sent to Provider"
-        }
-      ]
-    },
-    {
-      "id": "case-3",
-      "clientName": "Emily Blunt",
-      "providerName": "Royal London",
-      "policyNumber": "RL-777-X",
-      "status": "discovery",
-      "urgency": "normal",
-      "dateCreated": "2026-01-31T08:29:16.124Z",
-      "lastUpdateDate": "2026-01-31T08:29:16.124Z",
-      "nextActionDate": "2026-01-28T08:29:16.124Z",
-      "history": [
-        {
-          "id": "1",
-          "date": "2026-01-31T08:29:16.124Z",
-          "actor": "Advisor",
-          "action": "Discovery Meeting Notes Added"
-        }
-      ]
-    },
-    {
       "id": "case-1770020971983",
       "clientName": "BRIAN POTTER",
       "providerName": "Advisory Firm",
@@ -184,6 +140,146 @@
           "date": "2026-02-02T11:47:20.059Z",
           "actor": "Agent",
           "action": "Completed action: \"RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer\""
+        }
+      ]
+    },
+    {
+      "id": "case-1770033828083",
+      "clientName": "Alan & Lynne Partridge",
+      "providerName": "General Portfolio",
+      "policyNumber": "Pending",
+      "status": "discovery",
+      "dateCreated": "2026-02-02T12:03:48.083Z",
+      "lastUpdateDate": "2026-02-02T12:03:48.083Z",
+      "nextActionDate": "2026-02-02T12:03:48.083Z",
+      "clientContext": {
+        "netWorth": "£895,000",
+        "incomeSummary": "Household Income: £92,000",
+        "goals": [
+          "Alan retire age 65 (2030 – c. 4 years) – TARGET £55k/year",
+          "Lexus upgrade in 2026 (£45k cash purchase)",
+          "Mediterranean villa (Spain/Portugal) ~£180k for holidays/investment",
+          "Legacy project – Alan autobiography / podcast",
+          "Lynne potential early retirement around age 60 (2027)"
+        ],
+        "risks": [
+          "Alan job security in declining radio industry",
+          "Retirement income shortfall if pension contributions not increased",
+          "High property concentration risk if overseas villa purchased",
+          "Lifestyle inflation (£45k car + £180k villa in short period)",
+          "Lynne’s health may force earlier retirement than planned",
+          "Alan’s resistance to advice driven by ego and identity concerns"
+        ],
+        "nextSteps": [
+          "Before Next Review (2026): Alan to decide on pension contribution increase",
+          "Before Next Review (2026): Further analysis of villa costs and ownership implications",
+          "Before Next Review (2026): Lexus test drives completed",
+          "Before Next Review (2026): Lynne GP / physio follow-up for back problems",
+          "At Next Review (2027): Retirement income gap revisited with updated projections",
+          "At Next Review (2027): Final decision on Mediterranean property",
+          "At Next Review (2027): Lexus purchase confirmed or deferred",
+          "At Next Review (2027): Lynne retirement or hours-reduction plan agreed",
+          "At Next Review (2027): Wills and LPAs scheduled",
+          "PENDING: Alan pension contributions increase – Currently no voluntary contributions – Salary sacrifice £8k–£10k/year would materially reduce retirement shortfall – Without action: projected income c. £43k vs £55k target (shortfall £12k/year) – Recommendation remains: minimum £8k/year salary sacrifice",
+          "DECLINED (FOR NOW): Mediterranean villa purchase – Concerns remain: currency risk, rental uncertainty, property concentration – Lynne prefers renting first; Alan strongly lifestyle-driven – Decision: revisit after further reflection; if proceeding, cap £150k",
+          "IN PROGRESS: Lexus upgrade planning (2026) – Budget £45k cash – Options narrowed to new vs 1-year approved used – Recommendation remains nearly-new (£40k) to limit depreciation",
+          "PENDING: Lynne early retirement decision (2027) – Full retirement at 60 reduces surplus materially – Recommendation remains phased reduction (3 days/week) rather than full stop",
+          "NOT STARTED: Wills review – Existing wills dated 2008 – No children; executors ageing; LPAs absent – Deferred pending clarity on villa / Lexus decisions"
+        ],
+        "occupations": [],
+        "protection": [],
+        "completedSteps": [
+          "Before Next Review (2026): Alan to decide on pension contribution increase"
+        ]
+      },
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-02-02T12:03:48.083Z",
+          "actor": "Agent",
+          "action": "15/01/26: Alan email expressing confidence after contract renewal; 18/01/26: Lynne call – back problems worsening; 22/01/26: Alan text sharing Portugal villa listings"
+        },
+        {
+          "id": "nwwfwu24o",
+          "date": "2026-02-02T12:04:21.462Z",
+          "actor": "Agent",
+          "action": "Completed action: \"Before Next Review (2026): Alan to decide on pension contribution increase\""
+        }
+      ]
+    },
+    {
+      "id": "case-1770034622405",
+      "clientName": "Robert & Jennifer Hughes",
+      "providerName": "General Portfolio",
+      "policyNumber": "Pending",
+      "status": "discovery",
+      "dateCreated": "2026-02-02T12:17:02.405Z",
+      "lastUpdateDate": "2026-02-02T12:17:02.405Z",
+      "nextActionDate": "2026-02-02T12:17:02.405Z",
+      "clientContext": {
+        "netWorth": "£2.45m",
+        "incomeSummary": "Household Income: £165k (Robert only)",
+        "goals": [
+          "Robert retire age 60 (2028 – c. 3 years) – TARGET £80k/year",
+          "World cruise 2026 – £35k",
+          "Assist Tom with house deposit – £75k",
+          "Annual Australia trips to see Lucy – £8k/year",
+          "Possible downsize: £850k → £650k to release £200k",
+          "Long-term inheritance target: £500k per child"
+        ],
+        "risks": [
+          "Tight retirement income margin pre-state pension",
+          "Ongoing tax inefficiency of BTLs (45%/40% + mortgage interest restriction)",
+          "Children support expectations (£75k Tom; possible parity for Lucy)",
+          "Significant IHT exposure (£580k)",
+          "Partnership exit risk (timing/value certainty)",
+          "GBP/AUD exchange risk for Lucy support or inheritance"
+        ],
+        "nextSteps": [
+          "Before Next Review (2026) - Confirm Tom property purchase status",
+          "Before Next Review (2026) - Robert to complete LPAs",
+          "Before Next Review (2026) - Finalise BTL1 decision and execute sale or refinance",
+          "At Next Review (2027) - Full retirement income modelling (pre/post 2028)",
+          "At Next Review (2027) - BTL strategy final decision",
+          "At Next Review (2027) - Tom gift execution review",
+          "At Next Review (2027) - Partnership exit cashflow planning",
+          "At Next Review (2027) - IHT mitigation options",
+          "At Next Review (2027) - Renew attempt to move away from Charles Stanley",
+          "RECOMMENDATIONS - COMPLETED - Jennifer retirement planning completed (Aug 2024)",
+          "RECOMMENDATIONS - IN PROGRESS - Robert retirement planning for 2028",
+          "RECOMMENDATIONS - IN PROGRESS - Partnership exit negotiations",
+          "RECOMMENDATIONS - IN PROGRESS - Buyout £280k over 4 years (£70k/year)",
+          "RECOMMENDATIONS - IN PROGRESS - Exit deed targeted by June 2025 (still progressing)",
+          "RECOMMENDATIONS - PENDING - Tom £75k house deposit gift",
+          "RECOMMENDATIONS - PENDING - Awaiting property purchase",
+          "RECOMMENDATIONS - PENDING - Plan: PET using annual exemptions (£37.5k each)",
+          "RECOMMENDATIONS - PENDING - BTL1 mortgage decision (post-Aug 2025 expiry)",
+          "RECOMMENDATIONS - PENDING - A) Remortgage £85k @ ~4.8% (£510/month)",
+          "RECOMMENDATIONS - PENDING - B) Repay from savings",
+          "RECOMMENDATIONS - PENDING - C) Sell property: net c. £335k after ~£45k CGT",
+          "RECOMMENDATIONS - DECLINED - Sale of BTL portfolio overall",
+          "RECOMMENDATIONS - DECLINED - Robert prefers “income security” despite tax drag",
+          "RECOMMENDATIONS - DECLINED - Estimated CGT on both: ~£95k, net proceeds ~£630k",
+          "RECOMMENDATIONS - DECLINED - Increased Robert pension to £25k/year (saves ~£11,250 tax)",
+          "RECOMMENDATIONS - PENDING (URGENT) - Estate planning",
+          "RECOMMENDATIONS - PENDING (URGENT) - Wills last updated 2019",
+          "RECOMMENDATIONS - PENDING (URGENT) - Jennifer has LPAs",
+          "RECOMMENDATIONS - PENDING (URGENT) - Robert has NO LPAs – urgent action required",
+          "RECOMMENDATIONS - PENDING (URGENT) - IHT exposure: ~£580k on £2.45m estate",
+          "RECOMMENDATIONS - RECOMMENDED (RELUCTANT) - Charles Stanley portfolio review",
+          "RECOMMENDATIONS - RECOMMENDED (RELUCTANT) - Charges 1.6% (£3,520/year) vs DIY ~0.4% (£800)",
+          "RECOMMENDATIONS - RECOMMENDED (RELUCTANT) - Excess cost £2,720/year = £54,400 over 20 years",
+          "RECOMMENDATIONS - RECOMMENDED (RELUCTANT) - Both resistant due to long-standing relationship"
+        ],
+        "occupations": [],
+        "protection": []
+      },
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-02-02T12:17:02.405Z",
+          "actor": "Agent",
+          "action": "12/01/26 Email – Jennifer update re grandchild; 15/01/26 Call – Robert discussing Tom’s house search; 18/01/26 Text – BTL tenant boiler issue; 20/01/26 Sent updated BTL refinancing rates"
         }
       ]
     }

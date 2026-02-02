@@ -16,11 +16,10 @@ export async function ingestClientFile(rawText: string) {
 
     TASK:
     Map the text to the following JSON structure. 
-    1. 'goals': Extract top 3 specific goals (e.g. "Lexus upgrade", "Retire at 65").
-    2. 'risks': Specific health issues (e.g. "Back problems") or job concerns.
+    1. 'goals': Extract all the goals (e.g. "Lexus upgrade", "Retire at 65").
+    2. 'risks': All the health issues (e.g. "Back problems") or job concerns.
     3. 'occupations': Combine Name + Job Title + Income if available.
     4. 'protection': Summarize Life Cover or Critical Illness details.
-    5. 'status': Default to 'discovery'.
 
     OUTPUT JSON STRUCTURE:
     {
@@ -31,7 +30,7 @@ export async function ingestClientFile(rawText: string) {
       "clientContext": {
          "netWorth": "Total Net Worth Value",
          "incomeSummary": "Household Income Value",
-         "goals": ["Goal 1", "Goal 2", "Goal 3", "Goal 4"],
+         "goals": ["Goal 1", "Goal 2", "Goal 3", "Goal 4",...],
          "risks": ["Risk 1", "Risk 2", "Risk 3", "Risk 4"],
          "occupations": ["Alan: Radio Presenter (£68k)", "Lynne: Receptionist"],
          "protection": ["Alan: £200k Life Cover", "Lynne: £150k Life Cover"],

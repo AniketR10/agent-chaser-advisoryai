@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   Table,
   TableBody,
@@ -10,16 +10,26 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button" 
+import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Case } from "@/lib/types"
-import { formatDistance } from "date-fns"
+import { formatDistanceToNow } from "date-fns"
 import { CaseDetailsDialog } from "./case-details"
-import { CheckCircle2, MinusCircle, Trash2 } from "lucide-react" 
-import { deleteCase } from "@/app/actions" 
+import { CheckCircle2, MinusCircle, Trash2 } from "lucide-react"
+import { deleteCase } from "@/app/actions"
 
 export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: string }) {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null)
+  
+  const [, setTick] = useState(0)
+  useEffect(() => {
+    const timer = setInterval(() => setTick(t => t + 1), 60000)
+    return () => clearInterval(timer)
+  }, [])
+
+  const sortedCases = [...cases].sort((a, b) => 
+    new Date(b.dateCreated).getTime() - new Date(a.dateCreated).getTime()
+  );
 
   const cleanActionText = (text: string) => {
     return text
@@ -32,7 +42,7 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
   };
 
   const handleDelete = async (e: React.MouseEvent, id: string) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     if (confirm("Are you sure you want to delete this case?")) {
       await deleteCase(id);
     }
@@ -52,11 +62,11 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
                 <TableHead>Provider</TableHead>
                 <TableHead className="w-[50%]">Latest Action</TableHead>
                 <TableHead className="w-[15%] text-right pr-2">Last Update</TableHead>
-                <TableHead className="w-12.5"></TableHead>
+                <TableHead className="w-12.5"></TableHead> 
               </TableRow>
             </TableHeader>
             <TableBody>
-              {cases.map((c) => {
+              {sortedCases.map((c) => {
                 const completedSteps = c.clientContext?.completedSteps || [];
                 const rawLatestAction = completedSteps.length > 0 
                   ? completedSteps[completedSteps.length - 1] 
@@ -86,7 +96,7 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
                       )}
                     </TableCell>
                     <TableCell className="w-[15%] text-right pr-2 text-muted-foreground whitespace-nowrap">
-                      {formatDistance(new Date(c.lastUpdateDate), new Date(virtualDate))} ago
+                      {formatDistanceToNow(new Date(c.lastUpdateDate), { addSuffix: true })}
                     </TableCell>
                     <TableCell>
                       <Button 
@@ -113,24 +123,5 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
         virtualDate={virtualDate}
       />
     </>
-  )
-}
-
-function StatusBadge({ status }: { status: string }) {
-  const styles: Record<string, string> = {
-    'completed': 'bg-green-100 text-green-800 hover:bg-green-100',
-    'loa-sent-client': 'bg-blue-100 text-blue-800 hover:bg-blue-100',
-    'loa-sent-provider': 'bg-purple-100 text-purple-800 hover:bg-purple-100',
-    'processing-loa': 'bg-yellow-100 text-yellow-800 hover:bg-yellow-100',
-    'discovery': 'bg-slate-100 text-slate-800 hover:bg-slate-100',
-    'provider-ack': 'bg-teal-100 text-teal-800 hover:bg-teal-100',
-  };
-  
-  const label = status.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-  
-  return (
-    <Badge className={styles[status] || 'bg-slate-100 text-slate-800'}>
-      {label}
-    </Badge>
   )
 }
