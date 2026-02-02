@@ -10,10 +10,6 @@ import { ingestClientFile } from '@/lib/ingest';
 import { LogEntry } from '@/lib/types';
 import { generateScriptWithGroq } from '@/lib/ai';
 
-export async function resetSimulation() {
-  seedDatabase();
-  revalidatePath('/'); 
-}
 
 export async function advanceTime(days: number) {
   const db = getDb();
@@ -23,6 +19,14 @@ export async function advanceTime(days: number) {
   
   saveDb(db);
   revalidatePath('/');
+}
+
+export async function deleteCase(caseId: string) {
+  const db = getDb();
+  db.cases = db.cases.filter((c) => c.id !== caseId);
+  saveDb(db);
+  revalidatePath('/');
+  return { success: true };
 }
 
 export async function triggerAgent() {

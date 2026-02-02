@@ -1,6 +1,5 @@
-import { getDashboardData, resetSimulation } from './actions';
+import { getDashboardData} from './actions';
 import { CaseTable } from '@/components/dashboard/case-table';
-import { TimeControls } from '@/components/dashboard/time-controls';
 import { Button } from '@/components/ui/button';
 import { RefreshCcw } from 'lucide-react';
 import { AgentTrigger } from '@/components/dashboard/agent-trigger';
@@ -26,19 +25,9 @@ export default async function Home() {
               {new Date(data.virtualDate).toDateString()}
             </p>
           </div>
-          
-          <TimeControls />
-          
-          <div className="w-px h-8 bg-slate-200 mx-2" />
-
+        
           <ImportClientDialog />
 
-          <form action={resetSimulation}>
-            <Button className='cursor-pointer hover:bg-orange-100' variant="outline" size="sm">
-              <RefreshCcw className="w-4 h-4 mr-2" />
-              Reset
-            </Button>
-          </form>
         </div>
       </div>
 

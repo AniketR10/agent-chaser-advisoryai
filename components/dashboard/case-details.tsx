@@ -10,7 +10,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Case, LogEntry } from "@/lib/types" 
-import { formatDistance } from "date-fns"
+import { formatDistanceToNow } from "date-fns"
 import { 
   Bot, User, Building2, FileText, Copy, 
   AlertTriangle, Target, Wallet, ListTodo, Loader2, Sparkles, Check, CheckCircle2
@@ -38,13 +38,20 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
   const [localHistory, setLocalHistory] = useState<LogEntry[]>([]);
 
   useEffect(() => {
-    if (isOpen && caseData) {
-      setLocalCompleted(caseData.clientContext?.completedSteps || []);
-      setLocalHistory(caseData.history || []); 
-      setScript(null);
-      setScriptSourceAction(null);
-    }
-  }, [isOpen, caseData]);
+  if (isOpen && caseData) {
+    setLocalCompleted(caseData.clientContext?.completedSteps || []);
+
+    const sortedHistory = [...(caseData.history || [])].sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    setLocalHistory(sortedHistory);
+
+    setScript(null);
+    setScriptSourceAction(null);
+  }
+}, [isOpen, caseData]);
+
 
   if (!caseData) return null
 
@@ -101,7 +108,6 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
     }}>
       <DialogContent className="max-w-[96vw]! w-[96vw] h-[96vh] flex flex-col overflow-hidden font-sans p-0 gap-0 outline-none bg-slate-50">
         
-        {/* HEADER */}
         <div className="p-4 border-b border-slate-200 bg-white shrink-0 pr-16 shadow-sm z-20">
             <DialogHeader className="space-y-0.5">
             <div className="flex items-center justify-between">
@@ -130,7 +136,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
             </div>
             <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-6">
                 {visibleHistory.map((log) => (
-                    <TimelineItem key={log.id} log={log} virtualDate={virtualDate} />
+                    <TimelineItem key={log.id} log={log}/>
                 ))}
             </div>
           </div>
@@ -310,8 +316,9 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
   )
 }
 
-function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string }) {
+function TimelineItem({ log }: { log: LogEntry }) {
   const isAgent = log.actor === 'Agent';
+
   return (
     <div className="flex gap-3 group">
       <div className="w-6 flex flex-col items-center shrink-0">
@@ -320,22 +327,25 @@ function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string
         </div>
         <div className="w-0.5 grow bg-slate-200 mt-1 group-last:hidden min-h-4" />
       </div>
+
       <div className="pb-2 w-full">
         <div className="flex items-center gap-2 mb-0.5">
           <span className={`text-xs font-semibold ${isAgent ? 'text-indigo-700' : 'text-slate-900'}`}>
             {log.actor}
           </span>
           <span className="text-[10px] text-slate-400">
-            {formatDistance(new Date(log.date), new Date(virtualDate))} ago
+            {formatDistanceToNow(new Date(log.date), { addSuffix: true })}
           </span>
         </div>
+
         <div className={`text-xs leading-relaxed ${isAgent ? 'text-indigo-900 bg-indigo-50/50 p-2.5 rounded border border-indigo-100' : 'text-slate-600'}`}>
           {log.action}
         </div>
       </div>
     </div>
-  )
+  );
 }
+
 
 function getIcon(actor: string) {
   switch (actor) {

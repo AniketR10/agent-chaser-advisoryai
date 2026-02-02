@@ -2,31 +2,6 @@
   "virtualDate": "2026-02-02T08:29:16.124Z",
   "cases": [
     {
-      "id": "case-1",
-      "clientName": "Sarah Jenkins",
-      "providerName": "Alina",
-      "policyNumber": "AV-9982-X",
-      "status": "loa-sent-client",
-      "urgency": "normal",
-      "dateCreated": "2026-01-23T08:29:16.124Z",
-      "lastUpdateDate": "2026-01-25T08:29:16.124Z",
-      "nextActionDate": "2026-02-01T08:29:16.124Z",
-      "history": [
-        {
-          "id": "1",
-          "date": "2026-01-23T08:29:16.124Z",
-          "actor": "Advisor",
-          "action": "Case Created"
-        },
-        {
-          "id": "2",
-          "date": "2026-01-25T08:29:16.124Z",
-          "actor": "Advisor",
-          "action": "LOA Sent to Client"
-        }
-      ]
-    },
-    {
       "id": "case-2",
       "clientName": "Marcus Chen",
       "providerName": "Legal & General",
@@ -141,7 +116,12 @@
           "RECOMMENDATIONS - IN PROGRESS: Grief counselling and emotional support",
           "RECOMMENDATIONS - IN PROGRESS: Downsizing exploration",
           "RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k",
-          "RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial"
+          "RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial",
+          "RECOMMENDATIONS - IN PROGRESS: Cruse Bereavement support completed",
+          "UPCOMING ACTIONS - POST-REVIEW: Review travel insurance and medical disclosures",
+          "RECOMMENDATIONS - PENDING: Margaret’s ISA (£47k) consolidation",
+          "RECOMMENDATIONS - PENDING: Adviser to prepare step-by-step consolidation plan",
+          "RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer"
         ]
       },
       "history": [
@@ -174,6 +154,36 @@
           "date": "2026-02-02T08:47:07.946Z",
           "actor": "Agent",
           "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial\""
+        },
+        {
+          "id": "rlu0mc6fq",
+          "date": "2026-02-02T10:57:50.455Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Cruse Bereavement support completed\""
+        },
+        {
+          "id": "waouf7t6b",
+          "date": "2026-02-02T11:00:36.664Z",
+          "actor": "Agent",
+          "action": "Completed action: \"UPCOMING ACTIONS - POST-REVIEW: Review travel insurance and medical disclosures\""
+        },
+        {
+          "id": "m8mqgemb6",
+          "date": "2026-02-02T11:17:02.914Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Margaret’s ISA (£47k) consolidation\""
+        },
+        {
+          "id": "rd5w0scnw",
+          "date": "2026-02-02T11:35:09.203Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Adviser to prepare step-by-step consolidation plan\""
+        },
+        {
+          "id": "afh22ajax",
+          "date": "2026-02-02T11:47:20.059Z",
+          "actor": "Agent",
+          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer\""
         }
       ]
     }
