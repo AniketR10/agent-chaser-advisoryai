@@ -9,16 +9,14 @@ import {
 } from "@/components/ui/dialog"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Case, LogEntry } from "@/lib/types" 
 import { formatDistance } from "date-fns"
 import { 
-  Bot, User, Building2, FileText, PhoneCall, Sparkles, Copy, 
-  UploadCloud, Loader2, AlertTriangle, Target, Wallet 
+  Bot, User, Building2, FileText, Copy, 
+  AlertTriangle, Target, Wallet, ArrowRight, CheckCircle2, ListTodo, Loader2, Sparkles
 } from "lucide-react"
 import { useState } from "react"
-import { generateCallScript, uploadProviderDocument } from "@/app/actions"
+import { generateCallScript } from "@/app/actions"
 
 interface CaseDetailsDialogProps {
   isOpen: boolean
@@ -30,28 +28,21 @@ interface CaseDetailsDialogProps {
 export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: CaseDetailsDialogProps) {
   const [script, setScript] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
-  const [uploading, setUploading] = useState(false)
+  const [activeAction, setActiveAction] = useState<string | null>(null);
 
   if (!caseData && script) setScript(null)
 
-  const handleGenerateScript = async () => {
+  const handleGenerateScript = async (actionItem?: string) => {
     if (!caseData) return;
     setLoading(true);
-    const result = await generateCallScript(caseData.id);
+    if (actionItem) setActiveAction(actionItem);
+
+    const result = await generateCallScript(caseData.id, actionItem);
+    
     setScript(result);
     setLoading(false);
+    setActiveAction(null);
   }
-
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files?.[0] || !caseData) return;
-    setUploading(true);
-    const formData = new FormData();
-    formData.append('caseId', caseData.id);
-    formData.append('file', e.target.files[0]);
-    const result = await uploadProviderDocument(formData);
-    setUploading(false);
-    if (result.success && result.script) setScript(result.script);
-  };
 
   if (!caseData) return null
 
@@ -66,39 +57,45 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
       if (!open) setScript(null);
       onClose();
     }}>
-      <DialogContent className="max-w-[95vw]! w-[95vw] h-[92vh] flex flex-col overflow-hidden font-sans p-0 gap-0 outline-none">
+      {/* LAYOUT FIX 1: Increased height to h-[96vh] to use maximum screen real estate.
+      */}
+      <DialogContent className="!max-w-[96vw] w-[96vw] h-[96vh] flex flex-col overflow-hidden font-sans p-0 gap-0 outline-none bg-slate-50">
         
-        <div className="p-6 border-b border-slate-100 bg-white shrink-0 pr-16">
-            <DialogHeader className="space-y-1">
+        {/* LAYOUT FIX 2: Compact Header (p-4 instead of p-6) to save upper space */}
+        <div className="p-4 border-b border-slate-200 bg-white shrink-0 pr-16 shadow-sm z-20">
+            <DialogHeader className="space-y-0.5">
             <div className="flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                <DialogTitle className="text-2xl uppercase tracking-tight font-bold text-slate-900">
+                <div className="flex items-center gap-3">
+                <DialogTitle className="text-xl uppercase tracking-tight font-bold text-slate-900">
                     {caseData.clientName}
                 </DialogTitle>
-                <Badge variant="outline" className="font-mono text-sm px-2.5 py-0.5 bg-slate-50 border-slate-200 text-slate-600">
+                <Badge variant="outline" className="font-mono text-xs px-2 py-0.5 bg-slate-50 border-slate-200 text-slate-600">
                     {caseData.policyNumber}
                 </Badge>
                 </div>
                 {caseData.urgency === 'high' && (
-                <Badge variant="destructive" className="uppercase tracking-widest text-xs px-3 py-1 shadow-sm">
+                <Badge variant="destructive" className="uppercase tracking-widest text-[10px] px-2 py-0.5 shadow-sm">
                     High Urgency
                 </Badge>
                 )}
             </div>
-            <DialogDescription className="text-slate-500 text-base flex items-center gap-2">
+            <DialogDescription className="text-slate-500 text-sm flex items-center gap-2">
                 Provider: <span className="font-semibold text-slate-700">{caseData.providerName}</span>
             </DialogDescription>
             </DialogHeader>
         </div>
 
-        <div className="grid grid-cols-12 flex-1 overflow-hidden min-h-0 bg-slate-50/50">
+        {/* MAIN BODY */}
+        <div className="flex flex-1 overflow-hidden min-h-0">
           
-          <div className="col-span-3 overflow-y-auto border-r border-slate-200 h-full bg-white custom-scrollbar flex flex-col">
-            <div className="p-6">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-6 sticky top-0 bg-white z-10">
+          {/* LEFT COLUMN: Timeline (Fixed Width) */}
+          <div className="w-80 shrink-0 border-r border-slate-200 bg-white flex flex-col z-10">
+            <div className="p-4 border-b border-slate-100 bg-white sticky top-0 z-10">
+                <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
                 Activity Timeline
                 </h3>
-                <div className="space-y-8 pb-4">
+            </div>
+            <div className="flex-1 overflow-y-auto custom-scrollbar p-4 space-y-6">
                 {[...caseData.history].reverse().map((log) => (
                     <TimelineItem key={log.id} log={log} virtualDate={virtualDate} />
                 ))}
@@ -114,40 +111,46 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
                     </p>
                     </div>
                 </div>
-                </div>
             </div>
           </div>
 
-          <div className="col-span-9 flex flex-col h-full overflow-hidden p-6 gap-4"> 
+          {/* RIGHT COLUMN: Intelligence & Actions (Flex-1) */}
+          <div className="flex-1 flex flex-col overflow-hidden">
             
+            {/* ROW 1: CLIENT INTELLIGENCE 
+               LAYOUT FIX 3: Fixed height (h-64) and shrink-0. 
+               This ensures it NEVER pushes the bottom row off screen.
+            */}
             {hasContext && (
-              <div className="bg-white rounded-xl p-5 border border-slate-200 shrink-0 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
-                <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-4 flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-indigo-500" />
+              <div className="h-64 shrink-0 p-4 border-b border-slate-200 bg-slate-50/50 overflow-hidden flex flex-col">
+                <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-3 flex items-center gap-2 shrink-0">
+                  <Sparkles className="w-3 h-3 text-indigo-500" />
                   Client Intelligence
                 </h3>
                 
-                <div className="grid grid-cols-3 gap-6">
-                  {caseData.clientContext?.risks && caseData.clientContext.risks.length > 0 && (
-                    <div className="bg-red-50/40 p-4 rounded-lg border border-red-100/50 h-full">
-                      <p className="text-xs font-bold text-red-600 mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-                        <AlertTriangle className="w-3.5 h-3.5" /> Identified Risks
-                      </p>
-                      <ul className="list-disc list-inside text-sm text-slate-800 space-y-2">
-                        {caseData.clientContext.risks.map((risk, i) => (
+                <div className="grid grid-cols-3 gap-4 flex-1 min-h-0">
+                  {/* Risks - Scrollable Internally */}
+                  <div className="bg-red-50/40 p-3 rounded-lg border border-red-100/50 flex flex-col min-h-0">
+                    <p className="text-[10px] font-bold text-red-600 mb-2 flex items-center gap-1.5 uppercase tracking-wide shrink-0">
+                      <AlertTriangle className="w-3 h-3" /> Identified Risks
+                    </p>
+                    <div className="overflow-y-auto custom-scrollbar pr-1">
+                      <ul className="list-disc list-inside text-xs text-slate-800 space-y-1.5">
+                        {caseData.clientContext?.risks?.map((risk, i) => (
                           <li key={i} className="leading-snug">{risk}</li>
                         ))}
                       </ul>
                     </div>
-                  )}
+                  </div>
 
-                  {caseData.clientContext?.goals && (
-                    <div className="bg-slate-50/50 p-4 rounded-lg border border-slate-100 h-full">
-                      <p className="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-                        <Target className="w-3.5 h-3.5" /> Goals
-                      </p>
-                      <ul className="text-sm text-slate-700 space-y-2">
-                        {caseData.clientContext.goals.slice(0,4).map((g, i) => (
+                  {/* Goals - Scrollable Internally */}
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col min-h-0">
+                    <p className="text-[10px] font-bold text-slate-500 mb-2 flex items-center gap-1.5 uppercase tracking-wide shrink-0">
+                      <Target className="w-3 h-3" /> Goals
+                    </p>
+                    <div className="overflow-y-auto custom-scrollbar pr-1">
+                      <ul className="text-xs text-slate-700 space-y-1.5">
+                        {caseData.clientContext?.goals?.map((g, i) => (
                           <li key={i} className="flex gap-2 items-start">
                             <span className="text-slate-300 shrink-0">•</span> 
                             <span className="leading-snug">{g}</span>
@@ -155,103 +158,124 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
                         ))}
                       </ul>
                     </div>
-                  )}
+                  </div>
 
-                  {caseData.clientContext?.netWorth && (
-                    <div className="bg-slate-50/50 p-4 rounded-lg border border-slate-100 h-full">
-                      <p className="text-xs font-bold text-slate-500 mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-                        <Wallet className="w-3.5 h-3.5" /> Financial Summary
-                      </p>
-                      <div className="space-y-4">
-                         <div>
-                            <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Net Worth</p>
-                            <p className="text-xl font-bold text-slate-800 tracking-tight leading-none">
-                              {caseData.clientContext.netWorth}
-                            </p>
-                         </div>
-                         {caseData.clientContext.incomeSummary && (
-                            <div>
-                               <p className="text-xs text-slate-400 uppercase tracking-wide mb-1">Household Inc</p>
-                               <p className="text-sm font-medium text-slate-700 leading-none">
-                                 {caseData.clientContext.incomeSummary}
-                               </p>
-                            </div>
-                         )}
-                      </div>
+                  {/* Financials - Scrollable Internally */}
+                  <div className="bg-white p-3 rounded-lg border border-slate-200 flex flex-col min-h-0">
+                    <p className="text-[10px] font-bold text-slate-500 mb-2 flex items-center gap-1.5 uppercase tracking-wide shrink-0">
+                      <Wallet className="w-3 h-3" /> Financial Summary
+                    </p>
+                    <div className="overflow-y-auto custom-scrollbar pr-1 space-y-3">
+                       <div>
+                          <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-0.5">Net Worth</p>
+                          <p className="text-lg font-bold text-slate-800 tracking-tight leading-none">
+                            {caseData.clientContext?.netWorth}
+                          </p>
+                       </div>
+                       {caseData.clientContext?.incomeSummary && (
+                          <div>
+                             <p className="text-[10px] text-slate-400 uppercase tracking-wide mb-0.5">Household Inc</p>
+                             <p className="text-xs font-medium text-slate-700 leading-none">
+                               {caseData.clientContext.incomeSummary}
+                             </p>
+                          </div>
+                       )}
                     </div>
-                  )}
+                  </div>
                 </div>
               </div>
             )}
 
-            <div className="flex gap-6 flex-1 min-h-0">
+            {/* ROW 2: ACTIONS & NEXT STEPS 
+               LAYOUT FIX 4: flex-1 min-h-0. This takes all remaining space.
+            */}
+            <div className="flex-1 min-h-0 p-4 flex gap-4 overflow-hidden bg-white">
                
-               <div className="flex-1 flex flex-col min-h-0 bg-white rounded-xl border border-slate-200 shadow-[0_1px_2px_rgba(0,0,0,0.05)] overflow-hidden">
-                  <div className="px-5 py-3 border-b border-slate-100 bg-slate-50/30 flex justify-between items-center shrink-0">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Agent Recommended Actions
+               {/* LEFT: Generated Script Box */}
+               <div className="flex-1 flex flex-col min-h-0 rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-slate-50/30">
+                  <div className="px-4 py-2 border-b border-slate-200 bg-white flex justify-between items-center shrink-0">
+                    <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Agent Generated Script
                     </h3>
                     {script && (
-                        <Button variant="ghost" size="sm" className="h-8 text-xs" onClick={() => navigator.clipboard.writeText(script)}>
-                        <Copy className="w-3.5 h-3.5 mr-2" />
+                        <Button variant="ghost" size="sm" className="h-6 text-[10px]" onClick={() => navigator.clipboard.writeText(script)}>
+                        <Copy className="w-3 h-3 mr-1.5" />
                         Copy
                         </Button>
                     )}
                   </div>
                   
                   {script ? (
-                    <div className="flex-1 min-h-0 p-6 text-sm whitespace-pre-wrap font-mono overflow-y-auto custom-scrollbar text-slate-800 bg-indigo-50/10 leading-relaxed">
+                    <div className="flex-1 min-h-0 p-6 text-sm whitespace-pre-wrap font-sans text-slate-700 leading-relaxed overflow-y-auto custom-scrollbar bg-white">
                       {script}
                     </div>
                   ) : (
-                    <div className="flex-1 flex flex-col items-center justify-center text-center p-2">
+                    <div className="flex-1 flex flex-col items-center justify-center text-center p-6">
                       <div className="w-10 h-10 bg-indigo-50 rounded-full flex items-center justify-center mb-3">
                         <Bot className="w-5 h-5 text-indigo-600" />
                       </div>
                       <p className="text-sm text-slate-900 mb-1 font-medium">
-                        {caseData.urgency === 'high' ? 'High Urgency Action Plan' : 'Routine Check Recommended'}
+                        AI Script Generator
                       </p>
-                      <p className="text-xs text-slate-500 mb-4 max-w-sm leading-relaxed px-4">
-                        {hasContext 
-                          ? "Agent has analyzed client goals and risks to tailor the chase script." 
-                          : "Generate a chase script based on timeline delays."}
+                      <p className="text-xs text-slate-500 mb-0 max-w-xs leading-relaxed">
+                        Select an action from the list on the right to generate a tailored script.
                       </p>
-                      <Button onClick={handleGenerateScript} disabled={loading} size="default" className="bg-indigo-600 hover:bg-indigo-700 w-full max-w-xs shadow-md shadow-indigo-100/50">
-                        {loading ? <Sparkles className="w-4 h-4 mr-2 animate-spin" /> : <PhoneCall className="w-4 h-4 mr-2" />}
-                        Generate Smart Script
-                      </Button>
                     </div>
                   )}
                </div>
 
-               <div className="w-80 shrink-0 flex flex-col bg-white rounded-xl border border-slate-200 shadow-[0_1px_2px_rgba(0,0,0,0.05)] overflow-hidden">
-                  <div className="px-5 py-3 border-b border-slate-100 bg-slate-50/30 shrink-0">
-                    <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">
-                        Input Data
+               {/* RIGHT: Recommended Next Steps (Fixed Width) */}
+               <div className="w-72 shrink-0 flex flex-col rounded-xl border border-slate-200 shadow-sm overflow-hidden bg-white">
+                  <div className="px-4 py-2 border-b border-slate-200 bg-white shrink-0 flex items-center gap-2">
+                    <ListTodo className="w-3.5 h-3.5 text-slate-400" />
+                    <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                        Upcoming Actions
                     </h3>
                   </div>
-                  <div className="flex-1 p-4">
-                    <Label htmlFor="doc-upload" className="cursor-pointer block w-full h-full">
-                        <div className="h-full border-2 border-dashed border-slate-200 rounded-lg hover:border-indigo-400 hover:bg-indigo-50/30 transition-all flex flex-col items-center justify-center text-center p-4">
-                            <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center mb-3 shadow-sm border border-slate-100">
-                                {uploading ? <Loader2 className="w-5 h-5 animate-spin text-indigo-600" /> : <UploadCloud className="w-5 h-5 text-indigo-600" />}
-                            </div>
-                            <span className="font-semibold text-sm text-slate-900 block mb-1">
-                                {uploading ? "Analyzing..." : "Upload Response"}
-                            </span>
-                            <span className="text-xs text-slate-400 block px-2 leading-relaxed">
-                                Drag provider letters or emails here.
-                            </span>
-                            <Input 
-                                id="doc-upload" 
-                                type="file" 
-                                className="hidden" 
-                                accept=".txt,.pdf,.docx" 
-                                onChange={handleFileUpload}
-                                disabled={uploading}
-                            />
-                        </div>
-                    </Label>
+                  
+                  <div className="flex-1 p-3 overflow-y-auto custom-scrollbar bg-slate-50/30">
+                     <div className="space-y-2">
+                        {caseData.clientContext?.nextSteps && caseData.clientContext.nextSteps.length > 0 ? (
+                           caseData.clientContext.nextSteps.map((step, i) => (
+                              <button
+                                key={i}
+                                onClick={() => handleGenerateScript(step)}
+                                disabled={loading}
+                                className={`w-full text-left p-2.5 rounded-lg border transition-all duration-200 group relative
+                                   ${activeAction === step 
+                                      ? "bg-indigo-50 border-indigo-200 shadow-sm ring-1 ring-indigo-200" 
+                                      : "bg-white border-slate-200 hover:border-indigo-300 hover:shadow-sm"
+                                   }
+                                `}
+                              >
+                                 <div className="flex items-start gap-2.5">
+                                    <div className={`mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0 
+                                       ${activeAction === step ? "bg-indigo-100 text-indigo-600" : "bg-slate-100 text-slate-400 group-hover:text-indigo-500"}
+                                    `}>
+                                       {activeAction === step ? <Loader2 className="w-2.5 h-2.5 animate-spin" /> : <CheckCircle2 className="w-3 h-3" />}
+                                    </div>
+                                    <div>
+                                       <p className={`text-xs font-medium leading-snug ${activeAction === step ? "text-indigo-900" : "text-slate-700 group-hover:text-slate-900"}`}>
+                                          {step}
+                                       </p>
+                                    </div>
+                                 </div>
+                              </button>
+                           ))
+                        ) : (
+                           <div className="text-center p-4 text-slate-400 text-xs">
+                              No specific next steps found.
+                              <Button 
+                                variant="outline" 
+                                size="sm" 
+                                className="mt-3 w-full text-xs h-7"
+                                onClick={() => handleGenerateScript()}
+                              >
+                                Standard Chase
+                              </Button>
+                           </div>
+                        )}
+                     </div>
                   </div>
                </div>
             </div>
@@ -266,23 +290,23 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
 function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string }) {
   const isAgent = log.actor === 'Agent';
   return (
-    <div className="flex gap-4 group">
-      <div className="w-8 flex flex-col items-center shrink-0">
-        <div className={`p-2 rounded-full ${isAgent ? 'bg-indigo-100 text-indigo-600 ring-2 ring-indigo-50' : 'bg-slate-100 text-slate-500'}`}>
+    <div className="flex gap-3 group">
+      <div className="w-6 flex flex-col items-center shrink-0">
+        <div className={`p-1.5 rounded-full ${isAgent ? 'bg-indigo-100 text-indigo-600 ring-2 ring-indigo-50' : 'bg-slate-100 text-slate-500'}`}>
           {getIcon(log.actor)}
         </div>
-        <div className="w-0.5 grow bg-slate-200 mt-2 group-last:hidden min-h-5" />
+        <div className="w-0.5 grow bg-slate-200 mt-1 group-last:hidden min-h-[16px]" />
       </div>
       <div className="pb-2 w-full">
-        <div className="flex items-center gap-2 mb-1">
-          <span className={`text-sm font-semibold ${isAgent ? 'text-indigo-700' : 'text-slate-900'}`}>
+        <div className="flex items-center gap-2 mb-0.5">
+          <span className={`text-xs font-semibold ${isAgent ? 'text-indigo-700' : 'text-slate-900'}`}>
             {log.actor}
           </span>
-          <span className="text-xs text-slate-400">
+          <span className="text-[10px] text-slate-400">
             {formatDistance(new Date(log.date), new Date(virtualDate))} ago
           </span>
         </div>
-        <div className={`text-sm leading-relaxed ${isAgent ? 'text-indigo-900 bg-indigo-50/50 p-3 rounded-lg border border-indigo-100' : 'text-slate-600'}`}>
+        <div className={`text-xs leading-relaxed ${isAgent ? 'text-indigo-900 bg-indigo-50/50 p-2.5 rounded border border-indigo-100' : 'text-slate-600'}`}>
           {log.action}
         </div>
       </div>
@@ -292,9 +316,9 @@ function TimelineItem({ log, virtualDate }: { log: LogEntry, virtualDate: string
 
 function getIcon(actor: string) {
   switch (actor) {
-    case 'Agent': return <Bot className="w-4 h-4" />
-    case 'Client': return <User className="w-4 h-4" />
-    case 'Provider': return <Building2 className="w-4 h-4" />
-    default: return <FileText className="w-4 h-4" />
+    case 'Agent': return <Bot className="w-3.5 h-3.5" />
+    case 'Client': return <User className="w-3.5 h-3.5" />
+    case 'Provider': return <Building2 className="w-3.5 h-3.5" />
+    default: return <FileText className="w-3.5 h-3.5" />
   }
 }

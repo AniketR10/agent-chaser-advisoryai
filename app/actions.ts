@@ -39,14 +39,14 @@ export async function getDashboardData() {
   return getDb();
 }
 
-export async function generateCallScript(caseId: string) {
+export async function generateCallScript(caseId: string, specificAction?: string) {
   const db = getDb();
   const c = db.cases.find(x => x.id === caseId);
   
   if (!c) return "Error: Case not found";
 
   try {
-    const script = await generateScriptWithGroq(c);
+    const script = await generateScriptWithGroq(c, specificAction);
     return script;
   } catch (error) {
     return "Error: AI Service Unavailable";

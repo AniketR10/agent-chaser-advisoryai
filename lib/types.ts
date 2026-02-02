@@ -17,11 +17,12 @@ export interface ClientContext {
   netWorth?: string;        
   incomeSummary?: string;   
   goals?: string[];         
-  risks?: string[];         
-  occupations?: string[];   
-  protection?: string[];   
-  nextReviewDate?: string; 
-  notes?: string;           
+  risks?: string[];
+  nextSteps?: string[];     
+  occupations?: string[];
+  protection?: string[];
+  nextReviewDate?: string;
+  notes?: string;
 }
 
 export interface Case {
@@ -35,6 +36,7 @@ export interface Case {
   dateCreated: string;
   lastUpdateDate: string; 
   nextActionDate: string; 
+  suggestedNextAction?: string;
   
   clientContext?: ClientContext; 
   
