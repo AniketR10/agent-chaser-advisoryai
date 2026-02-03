@@ -23,10 +23,9 @@ interface CaseDetailsDialogProps {
   isOpen: boolean
   onClose: () => void
   caseData: Case | null
-  virtualDate: string
 }
 
-export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: CaseDetailsDialogProps) {
+export function CaseDetailsDialog({ isOpen, onClose, caseData }: CaseDetailsDialogProps) {
   const router = useRouter()
   
   const [script, setScript] = useState<string | null>(null)
@@ -50,7 +49,6 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
       setScriptSourceAction(null);
     }
   }, [isOpen, caseData]);
-
 
   if (!caseData) return null
 
@@ -79,7 +77,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
     
     const newLog: LogEntry = {
         id: `temp-${Date.now()}`,
-        date: new Date().toISOString(),
+        date: new Date().toISOString(), 
         actor: 'Agent',
         action: `Completed action: "${scriptSourceAction}"`
     };
@@ -136,7 +134,7 @@ export function CaseDetailsDialog({ isOpen, onClose, caseData, virtualDate }: Ca
                         <CalendarClock className="w-3.5 h-3.5 text-slate-500" />
                         <span className="text-xs font-medium text-slate-500">Next Review:</span>
                         <span className="text-xs font-bold text-slate-800">
-                           {caseData.nextActionDate || "Not Scheduled"}
+                            {caseData.nextActionDate || "Not Scheduled"}
                         </span>
                     </div>
                 </div>
@@ -351,6 +349,7 @@ function TimelineItem({ log }: { log: LogEntry }) {
             {log.actor}
           </span>
           <span className="text-[10px] text-slate-400">
+            {/* CHANGED: Use real time distance */}
             {formatDistanceToNow(new Date(log.date), { addSuffix: true })}
           </span>
         </div>
@@ -362,7 +361,6 @@ function TimelineItem({ log }: { log: LogEntry }) {
     </div>
   );
 }
-
 
 function getIcon(actor: string) {
   switch (actor) {

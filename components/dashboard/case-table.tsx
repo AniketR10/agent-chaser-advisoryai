@@ -18,7 +18,7 @@ import { CaseDetailsDialog } from "./case-details"
 import { CheckCircle2, MinusCircle, Trash2 } from "lucide-react"
 import { deleteCase } from "@/app/actions"
 
-export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: string }) {
+export function CaseTable({ cases }: { cases: Case[] }) {
   const [selectedCase, setSelectedCase] = useState<Case | null>(null)
   
   const [, setTick] = useState(0)
@@ -101,7 +101,7 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
                         </Badge>
                       )}
                     </TableCell>
-
+                    
                     <TableCell className="w-[15%] text-right pr-2 text-muted-foreground whitespace-nowrap">
                       {formatDistanceToNow(new Date(c.lastUpdateDate), { addSuffix: true })}
                     </TableCell>
@@ -128,7 +128,6 @@ export function CaseTable({ cases, virtualDate }: { cases: Case[], virtualDate: 
         isOpen={!!selectedCase} 
         onClose={() => setSelectedCase(null)} 
         caseData={selectedCase}
-        virtualDate={virtualDate}
       />
     </>
   )
