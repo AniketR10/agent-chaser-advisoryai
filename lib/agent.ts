@@ -35,7 +35,7 @@ export function runAgentCycle(db: DbSchema) {
 
 function createLog(date: Date, actor: LogEntry['actor'], action: string): LogEntry {
   return {
-    id: Math.random().toString(36).substr(2, 9),
+    id: Math.random().toString(36).slice(2, 9),
     date: date.toISOString(),
     actor,
     action

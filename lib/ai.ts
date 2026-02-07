@@ -1,95 +1,9 @@
 import Groq from "groq-sdk";
-import { saveDb, getDb } from "./db";
 import { Case } from "./types";
 
 const groq = new Groq({
   apiKey: process.env.GROQ_API_KEY,
 });
-
-export async function ingestClientFile(rawText: string) {
-  const prompt = `
-    You are a Data Entry Agent for a Financial Advisor.
-    Extract deep insight from the client file text below.
-
-    TEXT:
-    ${rawText}
-
-    TASK:
-    Map the text to the following JSON structure. 
-    1. 'goals': Extract all the goals (e.g. "Lexus upgrade", "Retire at 65").
-    2. 'risks': All the health issues (e.g. "Back problems") or job concerns.
-    3. 'occupations': Combine Name + Job Title + Income if available.
-    4. 'protection': Summarize Life Cover or Critical Illness details.
-
-    OUTPUT JSON STRUCTURE:
-    {
-      "clientName": "Name & Name",
-      "providerName": " pension provider mentioned",
-      "policyNumber": "Client ID: (in the top of the document)",
-      "status": "discovery",
-      "clientContext": {
-         "netWorth": "Total Net Worth Value",
-         "incomeSummary": "Household Income Value",
-         "goals": ["Goal 1", "Goal 2", "Goal 3", "Goal 4",...],
-         "risks": ["Risk 1", "Risk 2", "Risk 3", "Risk 4"],
-         "occupations": ["Alan: Radio Presenter (£68k)", "Lynne: Receptionist"],
-         "protection": ["Alan: £200k Life Cover", "Lynne: £150k Life Cover"],
-         "nextActionDate": "Date from top of file, "Next Review:" row",
-         "notes": "Brief summary of sensitive notes (e.g. 'No children')"
-      },
-      "latestLog": "Summary of the most recent item in 'Recent Communication'"
-    }
-  `;
-
-  const completion = await groq.chat.completions.create({
-    messages: [
-        { role: "system", content: "You are a JSON extractor." }, 
-        { role: "user", content: prompt }
-    ],
-    model: "openai/gpt-oss-120b",
-    response_format: { type: "json_object" },
-  });
-
-  const extracted = JSON.parse(completion.choices[0]?.message?.content || "{}");
-  const ctx = extracted.clientContext || {};
-
-  const newCase: Case = {
-    id: `case-${Date.now()}`,
-    clientName: extracted.clientName || "Unknown Client",
-    providerName: extracted.providerName || "General Portfolio",
-    policyNumber: extracted.policyNumber || "Pending",
-    status: extracted.status || 'discovery',
-    dateCreated: new Date().toISOString(),
-    lastUpdateDate: new Date().toISOString(),
-    nextActionDate: new Date().toISOString(),
-    
-    clientContext: {
-      netWorth: ctx.netWorth,
-      incomeSummary: ctx.incomeSummary,
-      goals: ctx.goals || [],
-      risks: ctx.risks || [],
-      occupations: ctx.occupations || [],
-      protection: ctx.protection || [],
-      nextReviewDate: ctx.nextReviewDate,
-      notes: ctx.notes
-    },
-    
-    history: [
-      {
-        id: '1',
-        date: new Date().toISOString(),
-        actor: 'Agent',
-        action: extracted.latestLog || "Imported client file."
-      }
-    ]
-  };
-
-  const db = getDb();
-  db.cases.push(newCase);
-  saveDb(db);
-
-  return newCase;
-}
 
 export async function generateScriptWithGroq(c: Case, actionFocus?: string) {
   
@@ -135,10 +49,10 @@ export async function generateScriptWithGroq(c: Case, actionFocus?: string) {
     });
     return completion.choices[0]?.message?.content || "Failed to generate script.";
   } catch (error) {
+    console.error("Script Gen Error:", error);
     return "Error generating script.";
   }
 }
-
 
 export async function analyzeDocumentWithGroq(fileContent: string, caseContext: any) {
   const prompt = `
@@ -169,14 +83,24 @@ export async function analyzeDocumentWithGroq(fileContent: string, caseContext: 
   }
   `;
 
-  const completion = await groq.chat.completions.create({
-    messages: [
-      { role: "system", content: "You are a helpful JSON-speaking assistant." },
-      { role: "user", content: prompt },
-    ],
-    model: "openai/gpt-oss-120b",
-    response_format: { type: "json_object" },
-  });
+  try {
+    const completion = await groq.chat.completions.create({
+      messages: [
+        { role: "system", content: "You are a helpful JSON-speaking assistant." },
+        { role: "user", content: prompt },
+      ],
+      model: "openai/gpt-oss-120b",
+      response_format: { type: "json_object" },
+    });
 
-  return JSON.parse(completion.choices[0]?.message?.content || "{}");
+    return JSON.parse(completion.choices[0]?.message?.content || "{}");
+  } catch (error) {
+    console.error("Analysis Error:", error);
+    return {
+      analysis: "Error analyzing document",
+      logEntry: "Analysis Failed",
+      newStatus: caseContext.status,
+      callScript: null
+    };
+  }
 }
