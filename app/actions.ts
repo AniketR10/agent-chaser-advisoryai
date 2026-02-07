@@ -128,6 +128,11 @@ export async function uploadProviderDocument(formData: FormData) {
   }
 }
 
+function extractClientId(text: string): string {
+  const match = text.match(/Client ID:\s*([A-Z0-9-]+)/i);
+  return match ? match[1].trim() : "Pending";
+}
+
 export async function importNewClient(formData: FormData) {
   const file = formData.get('file') as File;
   
@@ -139,7 +144,18 @@ export async function importNewClient(formData: FormData) {
     const text = await file.text();
     
     const newCase = await ingestClientFile(text);
+
+    const manualClientId = extractClientId(text);
+    newCase.policyNumber = manualClientId; 
+    const db = getDb();
+    const existingIndex = db.cases.findIndex(c => c.id === newCase.id);
+    if (existingIndex !== -1) {
+      db.cases[existingIndex] = newCase;
+    } else {
+      db.cases.push(newCase);
+    }
     
+    saveDb(db);
     revalidatePath('/');
     
     return { success: true, caseId: newCase.id };

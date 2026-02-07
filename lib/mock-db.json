@@ -2,148 +2,6 @@
   "virtualDate": "2026-02-02T08:29:16.124Z",
   "cases": [
     {
-      "id": "case-1770020971983",
-      "clientName": "BRIAN POTTER",
-      "providerName": "Advisory Firm",
-      "policyNumber": "Pending",
-      "status": "discovery",
-      "urgency": "high",
-      "dateCreated": "2026-02-02T08:29:31.983Z",
-      "lastUpdateDate": "2026-02-02T08:29:31.983Z",
-      "nextActionDate": "2026-02-02T08:29:31.983Z",
-      "clientContext": {
-        "netWorth": "£1.15m",
-        "incomeSummary": "£52,400/year (BAE DB Pension £38,900, State Pension £11,500, Investment income ~£2,000)",
-        "goals": [
-          "Continue adjusting emotionally to life without Margaret",
-          "Simplify finances (too many accounts causing overwhelm)",
-          "Help daughter Sarah financially (£30k under consideration)",
-          "Consider downsizing (house large, lonely, high maintenance)",
-          "Increase travel (Australia; Europe with sister)",
-          "Leave £300k inheritance to each child"
-        ],
-        "risks": [
-          "Loneliness and long-term mental health risk",
-          "House size and maintenance burden with declining mobility",
-          "Financial complexity overwhelming without Margaret",
-          "Potential family tension if Sarah helped without Andrew’s knowledge",
-          "Long-term health and possible care costs (£50k/year typical)",
-          "Very conservative asset allocation exposed to inflation erosion",
-          "Emotional aversion to investment risk following bereavement"
-        ],
-        "nextSteps": [
-          "RECOMMENDATIONS - IN PROGRESS: Grief counselling and emotional support",
-          "RECOMMENDATIONS - IN PROGRESS: Cruse Bereavement support completed",
-          "RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial",
-          "RECOMMENDATIONS - PENDING: Margaret’s ISA (£47k) consolidation",
-          "RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer",
-          "RECOMMENDATIONS - PENDING: Still in Margaret’s name due to emotional barrier",
-          "RECOMMENDATIONS - PENDING: Adviser to prepare paperwork; Brian only needs to sign",
-          "RECOMMENDATIONS - PENDING: Financial simplification",
-          "RECOMMENDATIONS - PENDING: Currently: 8 savings accounts, 2 ISAs, 1 investment platform",
-          "RECOMMENDATIONS - PENDING: Plan: reduce to 2–3 providers total",
-          "RECOMMENDATIONS - PENDING: Adviser to prepare step-by-step consolidation plan",
-          "RECOMMENDATIONS - IN PROGRESS: Downsizing exploration",
-          "RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k",
-          "RECOMMENDATIONS - IN PROGRESS: Current home £625k → net release ~£150k after ~£25k costs",
-          "RECOMMENDATIONS - IN PROGRESS: Emotional attachment significant after 34 years",
-          "RECOMMENDATIONS - IN PROGRESS: Timeline flexible (“when it feels right”)",
-          "RECOMMENDATIONS - PENDING: £30k support for Sarah",
-          "RECOMMENDATIONS - PENDING: Option A: Gift £30k now (PET; affordable; fairness discussion with Andrew)",
-          "RECOMMENDATIONS - PENDING: Option B: Loan £30k (formal agreement; repayment risk; family strain)",
-          "RECOMMENDATIONS - PENDING: Option C: Advance on inheritance (documented reduction of Sarah’s £300k share)",
-          "RECOMMENDATIONS - PENDING: Recommendation remains: Option A, with transparency to Andrew",
-          "UPCOMING ACTIONS - BEFORE NEXT REVIEW (2026): Prepare Margaret’s ISA transfer paperwork",
-          "UPCOMING ACTIONS - BEFORE NEXT REVIEW (2026): Brian to discuss Sarah gift openly with Andrew",
-          "UPCOMING ACTIONS - BEFORE NEXT REVIEW (2026): Continue bungalow viewings",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Execute ISA transfer",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Present consolidation plan and confirm next steps",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Finalise Sarah gift structure",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Review downsizing progress",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Discuss Australia travel timing",
-          "UPCOMING ACTIONS - AT NEXT REVIEW (2027): Emotional wellbeing check-in",
-          "UPCOMING ACTIONS - POST-REVIEW: Implement consolidations",
-          "UPCOMING ACTIONS - POST-REVIEW: Assist with gift execution if proceeding",
-          "UPCOMING ACTIONS - POST-REVIEW: Review travel insurance and medical disclosures"
-        ],
-        "occupations": [],
-        "protection": [],
-        "completedSteps": [
-          "RECOMMENDATIONS - IN PROGRESS: Grief counselling and emotional support",
-          "RECOMMENDATIONS - IN PROGRESS: Downsizing exploration",
-          "RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k",
-          "RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial",
-          "RECOMMENDATIONS - IN PROGRESS: Cruse Bereavement support completed",
-          "UPCOMING ACTIONS - POST-REVIEW: Review travel insurance and medical disclosures",
-          "RECOMMENDATIONS - PENDING: Margaret’s ISA (£47k) consolidation",
-          "RECOMMENDATIONS - PENDING: Adviser to prepare step-by-step consolidation plan",
-          "RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer"
-        ]
-      },
-      "history": [
-        {
-          "id": "1",
-          "date": "2026-02-02T08:29:31.983Z",
-          "actor": "Agent",
-          "action": "15/01/26: Email from Sarah requesting support; 18/01/26: Emotional call with Brian regarding Sarah’s situation; 20/01/26: Coffee meeting – downsizing and Margaret anniversary discussed; 23/01/26: Text – bungalow viewed (‘nice, but not right’)."
-        },
-        {
-          "id": "c8fqq4t98",
-          "date": "2026-02-02T08:30:28.650Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Grief counselling and emotional support\""
-        },
-        {
-          "id": "qo3lbtu2k",
-          "date": "2026-02-02T08:30:38.171Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Downsizing exploration\""
-        },
-        {
-          "id": "hmgnw2d42",
-          "date": "2026-02-02T08:46:07.765Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Target: 2-bed bungalow ~£450k\""
-        },
-        {
-          "id": "d7f2dei4n",
-          "date": "2026-02-02T08:47:07.946Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Monthly peer support group ongoing and beneficial\""
-        },
-        {
-          "id": "rlu0mc6fq",
-          "date": "2026-02-02T10:57:50.455Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - IN PROGRESS: Cruse Bereavement support completed\""
-        },
-        {
-          "id": "waouf7t6b",
-          "date": "2026-02-02T11:00:36.664Z",
-          "actor": "Agent",
-          "action": "Completed action: \"UPCOMING ACTIONS - POST-REVIEW: Review travel insurance and medical disclosures\""
-        },
-        {
-          "id": "m8mqgemb6",
-          "date": "2026-02-02T11:17:02.914Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Margaret’s ISA (£47k) consolidation\""
-        },
-        {
-          "id": "rd5w0scnw",
-          "date": "2026-02-02T11:35:09.203Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Adviser to prepare step-by-step consolidation plan\""
-        },
-        {
-          "id": "afh22ajax",
-          "date": "2026-02-02T11:47:20.059Z",
-          "actor": "Agent",
-          "action": "Completed action: \"RECOMMENDATIONS - PENDING: Eligible for spousal ISA transfer\""
-        }
-      ]
-    },
-    {
       "id": "case-1770036957263",
       "clientName": "ALAN & LYNNE PARTRIDGE",
       "providerName": "General Portfolio",
@@ -273,21 +131,21 @@
       ]
     },
     {
-      "id": "case-1770127510751",
-      "clientName": "Emma Thompson",
-      "providerName": "Jonathan Hayes",
-      "policyNumber": "Pending",
+      "id": "case-1770449300280",
+      "clientName": "EMMA THOMPSON",
+      "providerName": "Jonathan Hayes, DipPFS",
+      "policyNumber": "C004",
       "status": "discovery",
-      "dateCreated": "2026-02-03T14:05:10.751Z",
-      "lastUpdateDate": "2026-02-03T14:05:10.751Z",
-      "nextActionDate": "2026-02-03T14:05:10.751Z",
+      "dateCreated": "2026-02-07T07:28:20.280Z",
+      "lastUpdateDate": "2026-02-07T07:28:20.280Z",
+      "nextActionDate": "2026-02-07T07:28:20.280Z",
       "clientContext": {
         "netWorth": "£685,000",
         "incomeSummary": "£135,000",
         "goals": [
           "Retire age 60 (14 years) – TARGET £50k/year",
           "Career break age 50 (4 years) – Need £60k saved",
-          "Trade up to 3-bed house: £650k budget in 1–2 years",
+          "Trade up to 3‑bed house: £650k budget in 1–2 years",
           "Relationship with Tom: Discussing marriage/moving in",
           "Travel: £12k/year budget (2–3 international trips)"
         ],
@@ -299,27 +157,30 @@
           "Career burnout risk – sabbatical likely necessary, not optional"
         ],
         "nextSteps": [
-          "RECOMMENDATIONS STATUS: Increased pension 8%→12% (£11,040/year), saves £4,968 tax (45% relief) – DONE",
-          "RECOMMENDATIONS STATUS: Consolidate AZ pension (£68k) – PENDING (deferred due to relationship/property uncertainty)",
-          "RECOMMENDATIONS STATUS: Reduce mortgage term 15→12 years (£200/month extra) – DECLINED (flexibility preferred)",
-          "RECOMMENDATIONS STATUS: Will updated (Dec 2024) – DONE (Estate: 50% mother, 30% sister, 20% nieces)",
-          "RECOMMENDATIONS STATUS: LPAs – forms completed but not yet registered – PENDING",
-          "RECOMMENDATIONS STATUS: Pre-nup discussion if marrying Tom – combined assets c. £1.1m – PENDING",
-          "RECOMMENDATIONS STATUS: ISA contributions maximised at £20k/year – DONE",
-          "CURRENT OPPORTUNITIES: Salary increase embedded – Extra £7k/year already redirected to ISA (DONE)",
-          "CURRENT OPPORTUNITIES: Recommend £10k bonus sacrifice to pension – saves £4,500 tax",
-          "CURRENT OPPORTUNITIES: Recommend short‑term relationship/property scenario B or C; marry/buy in 1–2 years",
-          "CURRENT OPPORTUNITIES: Recommend LTC insurance £150/month or plan £2k/month from age 75 for mother’s care",
-          "CURRENT OPPORTUNITIES: Recommend £800/month separate pot for sabbatical funding (~£63k) – DONE",
-          "UPCOMING ACTIONS - Before Next Review (2026/27): LPA registration completion",
-          "UPCOMING ACTIONS - Before Next Review (2026/27): Formal relationship/property decision with Tom",
-          "UPCOMING ACTIONS - Before Next Review (2026/27): Pension consolidation revisit",
-          "UPCOMING ACTIONS - Before Next Review (2026/27): Mother care funding strategy agreed",
-          "UPCOMING ACTIONS - At Next Review (2027): Updated retirement projections",
-          "UPCOMING ACTIONS - At Next Review (2027): Property/relationship scenario modelling",
-          "UPCOMING ACTIONS - At Next Review (2027): Long‑term care contingency planning",
-          "UPCOMING ACTIONS - At Next Review (2027): Sabbatical funding progress check",
-          "UPCOMING ACTIONS - At Next Review (2027): Commission bonus sacrifice review"
+          "Recommendations: DONE – Increased pension 8%→12% (£11,040/year), saves £4,968 tax (45% relief)",
+          "Recommendations: PENDING – Consolidate AZ pension (£68k) – deferred due to relationship/property uncertainty",
+          "Recommendations: DECLINED – Reduce mortgage term 15→12 years (£200/month extra) – flexibility preferred",
+          "Recommendations: DONE – Will updated (Dec 2024) – Estate: 50% mother, 30% sister, 20% nieces",
+          "Recommendations: PENDING – LPAs – forms completed but not yet registered",
+          "Recommendations: ACTION – Submit LPAs to OPG in 2026",
+          "Recommendations: PENDING – Pre‑nub discussion if marrying Tom – combined assets c. £1.1m (handle Emma’s resistance sensitively)",
+          "Recommendations: DONE – ISA contributions maximised at £20k/year",
+          "Current Opportunities: Salary increase embedded – Extra £7k/year already redirected to ISA",
+          "Current Opportunities: Commission improved – Expected £35k+; Recommend £10k bonus sacrifice to pension – saves £4,500 tax",
+          "Current Opportunities: Scenario A – Marry & buy together: Sell both (£1,015k equity), buy £1.1m, mortgage £365k, joint £2,100/month (Emma £1,050) – saves £300/month",
+          "Current Opportunities: Scenario B – Move into Tom’s: Rent Emma’s £2,200/month – mortgage £1,350 = £850 surplus; share Tom’s costs +£800 → net +£50/month",
+          "Current Opportunities: Scenario C – Tom moves into Emma’s: Tom rents his £2,400/month, pays half Emma’s £675 – Emma saves £675/month; Recommend B or C short‑term; marry/buy in 1–2 years",
+          "Current Opportunities: Mother’s care planning – assets £180k; care £5k/month (£60k/year) ≈ 3 years cover; after care Emma may contribute £2k/month; Recommend LTC insurance £150/month or plan £2k/month from age 75",
+          "Current Opportunities: Sabbatical age 50 (4 years) – Need £60k; Recommend £800/month separate pot = £57,600 + interest ≈ £63k",
+          "Upcoming Actions (Before Next Review 2026/27): LPA registration completion",
+          "Upcoming Actions (Before Next Review 2026/27): Formal relationship/property decision with Tom",
+          "Upcoming Actions (Before Next Review 2026/27): Pension consolidation revisit",
+          "Upcoming Actions (Before Next Review 2026/27): Mother care funding strategy agreed",
+          "Upcoming Actions (At Next Review 2027): Updated retirement projections",
+          "Upcoming Actions (At Next Review 2027): Property/relationship scenario modelling",
+          "Upcoming Actions (At Next Review 2027): Long‑term care contingency planning",
+          "Upcoming Actions (At Next Review 2027): Sabbatical funding progress check",
+          "Upcoming Actions (At Next Review 2027): Commission bonus sacrifice review"
         ],
         "occupations": [],
         "protection": []
@@ -327,24 +188,24 @@
       "history": [
         {
           "id": "1",
-          "date": "2026-02-03T14:05:10.751Z",
+          "date": "2026-02-07T07:28:20.280Z",
           "actor": "Agent",
-          "action": "15/01/26 Email – LPA forms status (still unsubmitted); 18/01/26 Call – property discussions ongoing; 22/01/26 Text – update on mother’s dementia and care involvement"
+          "action": "15/01/26: Email – LPA forms status (still unsubmitted); 18/01/26: Call – property discussions ongoing; 22/01/26: Text – update on mother’s dementia and care involvement"
         }
       ]
     },
     {
-      "id": "case-1770448190077",
+      "id": "case-1770449479086",
       "clientName": "Robert & Jennifer Hughes",
       "providerName": "General Portfolio",
-      "policyNumber": "Pending",
+      "policyNumber": "C006",
       "status": "discovery",
-      "dateCreated": "2026-02-07T07:09:50.077Z",
-      "lastUpdateDate": "2026-02-07T07:09:50.077Z",
-      "nextActionDate": "2026-02-07T07:09:50.077Z",
+      "dateCreated": "2026-02-07T07:31:19.086Z",
+      "lastUpdateDate": "2026-02-07T07:31:19.086Z",
+      "nextActionDate": "2026-02-07T07:31:19.086Z",
       "clientContext": {
         "netWorth": "£2.45m",
-        "incomeSummary": "£165k (Robert only)",
+        "incomeSummary": "£165k (Robert) + £38.4k BTL rental",
         "goals": [
           "Robert retire age 60 (2028) – target £80k/year",
           "World cruise 2026 – £35k",
@@ -359,71 +220,109 @@
           "Children support expectations (£75k Tom; possible parity for Lucy)",
           "Significant IHT exposure (£580k)",
           "Partnership exit risk (timing/value certainty)",
-          "GBP/AUD exchange risk for Lucy support or inheritance"
+          "GBP/AUD exchange risk for Lucy support or inheritance)"
         ],
         "nextSteps": [
+          "UPCOMING ACTIONS - Before Next Review (2026) - Confirm Tom property purchase status",
+          "UPCOMING ACTIONS - Before Next Review (2026) - Robert to complete LPAs",
+          "UPCOMING ACTIONS - Before Next Review (2026) - Finalise BTL1 decision and execute sale or refinance",
+          "UPCOMING ACTIONS - At Next Review (2027) - Full retirement income modelling (pre/post 2028)",
+          "UPCOMING ACTIONS - At Next Review (2027) - BTL strategy final decision",
+          "UPCOMING ACTIONS - At Next Review (2027) - Tom gift execution review",
+          "UPCOMING ACTIONS - At Next Review (2027) - Partnership exit cashflow planning",
+          "UPCOMING ACTIONS - At Next Review (2027) - IHT mitigation options",
+          "UPCOMING ACTIONS - At Next Review (2027) - Renew attempt to move away from Charles Stanley",
+          "RECOMMENDATIONS STATUS - Last Full Review: Jan 2026",
+          "RECOMMENDATIONS STATUS - Jennifer retirement planning completed (Aug 2024)",
           "IN PROGRESS - Robert retirement planning for 2028",
-          "IN PROGRESS - Partnership exit negotiations",
-          "IN PROGRESS - Buyout £280k over 4 years (£70k/year)",
-          "IN PROGRESS - Exit deed targeted by June 2025 (still progressing)",
-          "PENDING - Tom £75k house deposit gift",
-          "PENDING - Awaiting property purchase",
-          "PENDING - Plan: PET using annual exemptions (£37.5k each)",
+          "IN PROGRESS - Partnership exit negotiations - Buyout £280k over 4 years (£70k/year)",
+          "IN PROGRESS - Partnership exit negotiations - Exit deed targeted by June 2025 (still progressing)",
+          "PENDING - Tom £75k house deposit gift - Awaiting property purchase",
+          "PENDING - Tom £75k house deposit gift - Plan: PET using annual exemptions (£37.5k each)",
+          "PENDING - BTL1 mortgage decision (post-Aug 2025 expiry) - A) Remortgage £85k @ ~4.8% (£510/month)",
+          "PENDING - BTL1 mortgage decision (post-Aug 2025 expiry) - B) Repay from savings",
+          "PENDING - BTL1 mortgage decision (post-Aug 2025 expiry) - C) Sell property: net c. £335k after ~£45k CGT",
+          "DECLINED - Sale of BTL portfolio overall",
+          "DECLINED - Robert prefers “income security” despite tax drag",
+          "DECLINED - Estimated CGT on both: ~£95k, net proceeds ~£630k",
+          "DECLINED - Increased Robert pension to £25k/year (saves ~£11,250 tax)",
           "PENDING (URGENT) - Estate planning",
           "PENDING (URGENT) - Wills last updated 2019",
           "PENDING (URGENT) - Jennifer has LPAs",
           "PENDING (URGENT) - Robert has NO LPAs – urgent action required",
           "PENDING (URGENT) - IHT exposure: ~£580k on £2.45m estate",
-          "DECLINED - Sale of BTL portfolio overall",
-          "DECLINED - Robert prefers “income security” despite tax drag",
-          "DECLINED - Estimated CGT on both: ~£95k, net proceeds ~£630k",
-          "DECLINED - Increased Robert pension to £25k/year (saves ~£11,250 tax)",
           "RECOMMENDED (RELUCTANT) - Charles Stanley portfolio review",
           "RECOMMENDED (RELUCTANT) - Charges 1.6% (£3,520/year) vs DIY ~0.4% (£800)",
           "RECOMMENDED (RELUCTANT) - Excess cost £2,720/year = £54,400 over 20 years",
           "RECOMMENDED (RELUCTANT) - Both resistant due to long-standing relationship",
-          "CURRENT OPPORTUNITIES - Jennifer’s unused personal allowance",
-          "CURRENT OPPORTUNITIES - Shift savings/income to her = ~£5k/year tax saving",
-          "CURRENT OPPORTUNITIES - Sale of BTL1",
-          "CURRENT OPPORTUNITIES - Release £335k, reinvest into ISAs/pensions",
-          "CURRENT OPPORTUNITIES - Tom gift structuring",
-          "CURRENT OPPORTUNITIES - £75k split evenly, utilise annual exemptions + PET",
-          "CURRENT OPPORTUNITIES - Lucy permanently abroad",
-          "CURRENT OPPORTUNITIES - Consider £500k life policy in trust",
-          "CURRENT OPPORTUNITIES - Indicative cost ~£180/month",
-          "CURRENT OPPORTUNITIES - Partnership buyout planning",
-          "CURRENT OPPORTUNITIES - £280k over 4 years = £70k/year",
-          "CURRENT OPPORTUNITIES - Tax-efficient staging required",
-          "CURRENT OPPORTUNITIES - Downsizing later",
-          "CURRENT OPPORTUNITIES - Release £200k (£100k per child or retirement buffer)",
-          "UPCOMING ACTIONS - Before Next Review (2026): Confirm Tom property purchase status",
-          "UPCOMING ACTIONS - Before Next Review (2026): Robert to complete LPAs",
-          "UPCOMING ACTIONS - Before Next Review (2026): Finalise BTL1 decision and execute sale or refinance",
-          "UPCOMING ACTIONS - At Next Review (2027): Full retirement income modelling (pre/post 2028)",
-          "UPCOMING ACTIONS - At Next Review (2027): BTL strategy final decision",
-          "UPCOMING ACTIONS - At Next Review (2027): Tom gift execution review",
-          "UPCOMING ACTIONS - At Next Review (2027): Partnership exit cashflow planning",
-          "UPCOMING ACTIONS - At Next Review (2027): IHT mitigation options",
-          "UPCOMING ACTIONS - At Next Review (2027): Renew attempt to move away from Charles Stanley"
+          "CURRENT OPPORTUNITIES - Jennifer’s unused personal allowance – Shift savings/income to her = ~£5k/year tax saving",
+          "CURRENT OPPORTUNITIES - Sale of BTL1 – Release £335k, reinvest into ISAs/pensions",
+          "CURRENT OPPORTUNITIES - Tom gift structuring – £75k split evenly, utilise annual exemptions + PET",
+          "CURRENT OPPORTUNITIES - Lucy permanently abroad – Consider £500k life policy in trust – Indicative cost ~£180/month",
+          "CURRENT OPPORTUNITIES - Partnership buyout planning – £280k over 4 years = £70k/year – Tax‑efficient staging required",
+          "CURRENT OPPORTUNITES - Downsizing later – Release £200k (£100k per child or retirement buffer)"
         ],
         "occupations": [],
-        "protection": [],
-        "completedSteps": [
-          "IN PROGRESS - Robert retirement planning for 2028"
-        ]
+        "protection": []
       },
       "history": [
         {
           "id": "1",
-          "date": "2026-02-07T07:09:50.077Z",
+          "date": "2026-02-07T07:31:19.086Z",
           "actor": "Agent",
-          "action": "12/01/26: Email – Jennifer update re grandchild; 15/01/26: Call – Robert discussing Tom’s house search; 18/01/26: Text – BTL tenant boiler issue; 20/01/26: Sent updated BTL refinancing rates."
-        },
+          "action": "Imported client file."
+        }
+      ]
+    },
+    {
+      "id": "case-1770449755993",
+      "clientName": "Gareth Cheeseman",
+      "providerName": "General Portfolio",
+      "policyNumber": "C007",
+      "status": "discovery",
+      "dateCreated": "2026-02-07T07:35:55.993Z",
+      "lastUpdateDate": "2026-02-07T07:35:55.993Z",
+      "nextActionDate": "2026-02-07T07:35:55.993Z",
+      "clientContext": {
+        "netWorth": "£285,000",
+        "incomeSummary": "£86,000 annual",
+        "goals": [
+          "Rebuild long-term financial security",
+          "Purchase property £400k (deposit £40k) – target 2026",
+          "Retire age 60 (14 years) – TARGET £45k/year",
+          "University funding: £30k per child (£60k total)",
+          "Relationship progression (dating Sarah, 9+ months)",
+          "Possible career move into consultancy (£95k–£110k)"
+        ],
+        "risks": [
+          "Single-income vulnerability with ongoing maintenance",
+          "No income protection during peak responsibility years",
+          "Relationship financial exposure without legal safeguards",
+          "Property timing uncertainty (rates ~4.75%, flat prices)",
+          "Career change risk while mortgage planning",
+          "Emotional load: parenting, work, dating post-divorce",
+          "Retirement shortfall risk: Projected pot ~£580k at 60; Income ~£34.7k vs £45k target; Options: higher contributions, work to 65, or reduce target"
+        ],
+        "nextSteps": [
+          "Before Next Review (2026): Will drafting appointment booked and completed",
+          "Before Next Review (2026): Relationship housing decision confirmed",
+          "Before Next Review (2026): House deposit progress review",
+          "Before Next Review (2026): Jack therapy reassessment",
+          "At Next Review (2027): Mortgage pre-approval and purchase planning",
+          "At Next Review (2027): Retirement shortfall modelling",
+          "At Next Review (2027): Cohabitation agreement discussion (if applicable)",
+          "At Next Review (2027): Income protection revisit",
+          "At Next Review (2027): University savings plan activation"
+        ],
+        "occupations": [],
+        "protection": []
+      },
+      "history": [
         {
-          "id": "g88l2monw",
-          "date": "2026-02-07T07:10:21.667Z",
+          "id": "1",
+          "date": "2026-02-07T07:35:55.993Z",
           "actor": "Agent",
-          "action": "Completed action: \"IN PROGRESS - Robert retirement planning for 2028\""
+          "action": "Recent communications include: 10/01/26 Email confirming salary increase; 14/01/26 Call discussing housing options with Sarah; 18/01/26 Text updating on Jack’s therapy progress."
         }
       ]
     }
