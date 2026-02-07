@@ -1,6 +1,5 @@
 import { getDashboardData } from './actions';
 import { CaseTable } from '@/components/dashboard/case-table';
-import { AgentTrigger } from '@/components/dashboard/agent-trigger';
 import { ImportClientDialog } from '@/components/dashboard/client-dialog';
 
 export default async function Home() {
@@ -16,7 +15,6 @@ export default async function Home() {
         
         <div className="flex gap-4 items-center bg-white p-4 rounded-lg shadow-sm border">
 
-          <AgentTrigger/>
           
           <div className="text-right mr-4 border-r pr-4">
             <p className="text-xs text-slate-400 font-bold uppercase">Today's Date</p>

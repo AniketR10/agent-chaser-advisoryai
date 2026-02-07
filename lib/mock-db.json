@@ -332,6 +332,100 @@
           "action": "15/01/26 Email – LPA forms status (still unsubmitted); 18/01/26 Call – property discussions ongoing; 22/01/26 Text – update on mother’s dementia and care involvement"
         }
       ]
+    },
+    {
+      "id": "case-1770448190077",
+      "clientName": "Robert & Jennifer Hughes",
+      "providerName": "General Portfolio",
+      "policyNumber": "Pending",
+      "status": "discovery",
+      "dateCreated": "2026-02-07T07:09:50.077Z",
+      "lastUpdateDate": "2026-02-07T07:09:50.077Z",
+      "nextActionDate": "2026-02-07T07:09:50.077Z",
+      "clientContext": {
+        "netWorth": "£2.45m",
+        "incomeSummary": "£165k (Robert only)",
+        "goals": [
+          "Robert retire age 60 (2028) – target £80k/year",
+          "World cruise 2026 – £35k",
+          "Assist Tom with house deposit – £75k",
+          "Annual Australia trips to see Lucy – £8k/year",
+          "Possible downsize: £850k → £650k to release £200k",
+          "Long-term inheritance target: £500k per child"
+        ],
+        "risks": [
+          "Tight retirement income margin pre-state pension",
+          "Ongoing tax inefficiency of BTLs (45%/40% + mortgage interest restriction)",
+          "Children support expectations (£75k Tom; possible parity for Lucy)",
+          "Significant IHT exposure (£580k)",
+          "Partnership exit risk (timing/value certainty)",
+          "GBP/AUD exchange risk for Lucy support or inheritance"
+        ],
+        "nextSteps": [
+          "IN PROGRESS - Robert retirement planning for 2028",
+          "IN PROGRESS - Partnership exit negotiations",
+          "IN PROGRESS - Buyout £280k over 4 years (£70k/year)",
+          "IN PROGRESS - Exit deed targeted by June 2025 (still progressing)",
+          "PENDING - Tom £75k house deposit gift",
+          "PENDING - Awaiting property purchase",
+          "PENDING - Plan: PET using annual exemptions (£37.5k each)",
+          "PENDING (URGENT) - Estate planning",
+          "PENDING (URGENT) - Wills last updated 2019",
+          "PENDING (URGENT) - Jennifer has LPAs",
+          "PENDING (URGENT) - Robert has NO LPAs – urgent action required",
+          "PENDING (URGENT) - IHT exposure: ~£580k on £2.45m estate",
+          "DECLINED - Sale of BTL portfolio overall",
+          "DECLINED - Robert prefers “income security” despite tax drag",
+          "DECLINED - Estimated CGT on both: ~£95k, net proceeds ~£630k",
+          "DECLINED - Increased Robert pension to £25k/year (saves ~£11,250 tax)",
+          "RECOMMENDED (RELUCTANT) - Charles Stanley portfolio review",
+          "RECOMMENDED (RELUCTANT) - Charges 1.6% (£3,520/year) vs DIY ~0.4% (£800)",
+          "RECOMMENDED (RELUCTANT) - Excess cost £2,720/year = £54,400 over 20 years",
+          "RECOMMENDED (RELUCTANT) - Both resistant due to long-standing relationship",
+          "CURRENT OPPORTUNITIES - Jennifer’s unused personal allowance",
+          "CURRENT OPPORTUNITIES - Shift savings/income to her = ~£5k/year tax saving",
+          "CURRENT OPPORTUNITIES - Sale of BTL1",
+          "CURRENT OPPORTUNITIES - Release £335k, reinvest into ISAs/pensions",
+          "CURRENT OPPORTUNITIES - Tom gift structuring",
+          "CURRENT OPPORTUNITIES - £75k split evenly, utilise annual exemptions + PET",
+          "CURRENT OPPORTUNITIES - Lucy permanently abroad",
+          "CURRENT OPPORTUNITIES - Consider £500k life policy in trust",
+          "CURRENT OPPORTUNITIES - Indicative cost ~£180/month",
+          "CURRENT OPPORTUNITIES - Partnership buyout planning",
+          "CURRENT OPPORTUNITIES - £280k over 4 years = £70k/year",
+          "CURRENT OPPORTUNITIES - Tax-efficient staging required",
+          "CURRENT OPPORTUNITIES - Downsizing later",
+          "CURRENT OPPORTUNITIES - Release £200k (£100k per child or retirement buffer)",
+          "UPCOMING ACTIONS - Before Next Review (2026): Confirm Tom property purchase status",
+          "UPCOMING ACTIONS - Before Next Review (2026): Robert to complete LPAs",
+          "UPCOMING ACTIONS - Before Next Review (2026): Finalise BTL1 decision and execute sale or refinance",
+          "UPCOMING ACTIONS - At Next Review (2027): Full retirement income modelling (pre/post 2028)",
+          "UPCOMING ACTIONS - At Next Review (2027): BTL strategy final decision",
+          "UPCOMING ACTIONS - At Next Review (2027): Tom gift execution review",
+          "UPCOMING ACTIONS - At Next Review (2027): Partnership exit cashflow planning",
+          "UPCOMING ACTIONS - At Next Review (2027): IHT mitigation options",
+          "UPCOMING ACTIONS - At Next Review (2027): Renew attempt to move away from Charles Stanley"
+        ],
+        "occupations": [],
+        "protection": [],
+        "completedSteps": [
+          "IN PROGRESS - Robert retirement planning for 2028"
+        ]
+      },
+      "history": [
+        {
+          "id": "1",
+          "date": "2026-02-07T07:09:50.077Z",
+          "actor": "Agent",
+          "action": "12/01/26: Email – Jennifer update re grandchild; 15/01/26: Call – Robert discussing Tom’s house search; 18/01/26: Text – BTL tenant boiler issue; 20/01/26: Sent updated BTL refinancing rates."
+        },
+        {
+          "id": "g88l2monw",
+          "date": "2026-02-07T07:10:21.667Z",
+          "actor": "Agent",
+          "action": "Completed action: \"IN PROGRESS - Robert retirement planning for 2028\""
+        }
+      ]
     }
   ]
 }
