@@ -78,70 +78,16 @@ cd agent-chaser
 npm install
 ```
 
-### 3. Get your API Keys
-### Getting a Groq API Key
-
-This project uses **Groq (GPT OSS 120B)** for AI-powered scripting and extraction.
-
-Follow these steps to obtain your API key:
-
-1. Visit the **Groq Console**  
-   👉 https://console.groq.com
-
-2. Sign in or create a Groq account.
-
-3. Navigate to the **API Keys** section from the dashboard.
-
-4. Click **Create API Key**.
-
-5. Copy the generated key and store it securely.
-
-### Getting a Neon Database Connection String
-
-This project uses **Neon Serverless Postgres** as the database.
-
-1. Visit the **Neon Dashboard**  
-   👉 https://neon.tech
-
-2. Sign in or create a Neon account.
-
-3. Create a new **Project**.
-
-4. Select a **Postgres database** and preferred **region**.
-
-5. Once the project is created, navigate to **Connection Details**.
-
-6. Copy the **Postgres connection string** (disable the connection pooling first, very important).
-
-7. Add the connection string to your environment variables:
-
+### 3. Configure Environment Variables
+Create a .env file in the root directory and add the following keys as it is:
 ```bash
-DATABASE_URL="postgresql://user:password@host/neondb?sslmode=require"
-```
+GROQ_API_KEY="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"
 
-8. This project uses a **JSON-store approach within Postgres**.  
-You must create the initial table in your [**Neon SQL Editor**](https://neon.com/).
-
-```sql
-CREATE TABLE app_storage (
-  id BOOLEAN PRIMARY KEY DEFAULT TRUE,
-  data JSONB
-);
-
--- Initialize with empty data
-INSERT INTO app_storage (id, data) 
-VALUES (TRUE, '{"cases": [], "virtualDate": "2026-02-07"}');
-```
-### 4. Configure Environment Variables
-Create a .env file in the root directory and add the following keys:
-```bash
-GROQ_API_KEY="gsk_..."
-
-DATABASE_URL="neon-connection-string"
+DATABASE_URL="postgresql://neondb_owner:npg_nTe3sJIQAB2g@ep-rough-shadow-a1049bzc.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
 
 ```
 
-### 5. Run the Application
+### 4. Run the Application
 
 ```bash
 npm run dev
