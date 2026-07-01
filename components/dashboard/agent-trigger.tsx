@@ -8,10 +8,7 @@ import { useState } from "react";
 export function AgentTrigger() {
   const [loading, setLoading] = useState(false);
 
-  const handleTrigger = async () => {
-    setLoading(true);
-    await triggerAgent();
-    setLoading(false);
+ 
   };
 
   return (
