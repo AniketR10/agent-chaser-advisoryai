@@ -34,7 +34,6 @@ export async function saveDb(data: DbSchema): Promise<void> {
   } catch (error) {
     console.error("Database Write Error:", error);
     throw new Error("Failed to save to database");
-  }
 }
 
 export async function updateCase(updatedCase: Case) {
